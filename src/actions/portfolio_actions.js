@@ -1,14 +1,14 @@
-export const RECEIVE_PORTFOLIOS = 'RECEIVE_PORTFOLIOS';
-export const RECEIVE_PORTFOLIO = 'RECEIVE_PORTFOLIO';
+export const FETCH_PORTFOLIOS = 'FETCH_PORTFOLIOS';
+export const FETCH_PORTFOLIO = 'FETCH_PORTFOLIO';
 
 
 export const receivePortfolios = (portfolios) => ({
-  type: RECEIVE_PORTFOLIOS, 
-  portfolios
+  type: FETCH_PORTFOLIOS, 
+  payload: { portfolios }
 });
 
 export const receivePortfolio = (portfolio) => ({
-  type: RECEIVE_PORTFOLIO, 
+  type: FETCH_PORTFOLIO, 
   portfolio
 });
 
