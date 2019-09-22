@@ -1,11 +1,8 @@
 import React from 'react';
 import { Route, Redirect, Switch, Link } from 'react-router-dom';
-import PortfoliosList from './components/part_1/portfolios_list';
+import PortfoliosList from './components/portfolios/portfolios_list';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   
   render() {
     return (
@@ -14,6 +11,7 @@ class App extends React.Component {
 
         <Switch>
           <Route path="/" component={PortfoliosList} /> 
+          {/* <Route path="/manage" component={Transactions} />  */}
         </Switch>
       </div>
     )
