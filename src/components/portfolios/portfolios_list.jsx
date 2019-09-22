@@ -61,15 +61,15 @@ class PortfoliosList extends React.Component {
     }
   }
 
-  createChart = () =>  {
+  createChart = (pData) =>  {
     const ctx = document.getElementById('myChart');
     const myChart = new Chart(ctx, {
       type: 'doughnut',
       data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: ['Bonds', 'Stocks', 'Real Estate', 'International Stocks', 'Exotic Motor Cars'],
         datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
+          label: '% of financial distribution',
+          data: [12, 19, 3, 5, 2],
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -89,15 +89,15 @@ class PortfoliosList extends React.Component {
           borderWidth: 1
         }]
       },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
+      // options: {
+      //   scales: {
+      //     yAxes: [{
+      //       ticks: {
+      //         beginAtZero: true
+      //       }
+      //     }]
+      //   }
+      // }
     });
     return (
       myChart
@@ -118,6 +118,7 @@ class PortfoliosList extends React.Component {
 
         {/* portfolio profile */}
         {this.getPortfolio()}
+        
 
         <canvas id="myChart" width="400" height="400"></canvas>
 
