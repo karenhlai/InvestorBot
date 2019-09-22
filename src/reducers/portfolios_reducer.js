@@ -12,8 +12,8 @@ export default (state = initialState, action) => {
       nextState = merge({}, state, action.portfolios);
       return nextState;
     case FETCH_PORTFOLIO:
-      let newState = merge({}, state, { [action.portfolio.id]: action.portfolio } );
-      // return nextState;
+      nextState = merge({}, state, { [action.portfolio.id]: action.portfolio } );
+      return nextState;
       debugger
       return nextState[action.portfolio.id] = action.portfolio;
     default:

@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { fetchPortfolios, fetchPortfolio } from "../../actions/portfolio_actions";
 
+
 class PortfoliosList extends React.Component {
   constructor(props) {
     super(props);
@@ -47,10 +48,13 @@ class PortfoliosList extends React.Component {
       default: 
         const displayPortfolio = this.props.portfolios[this.state.number-1];
         return (
-          <div className="portfolio-container">
-            {displayPortfolio.portfolio_id}
-            {displayPortfolio.portfolio_category}
-            {displayPortfolio.portfolio_description}
+          <div className="portfolio-profile">
+            <h3>
+              {displayPortfolio.portfolio_category}
+            </h3>
+            <p>
+              {displayPortfolio.portfolio_description}
+            </p>
           </div>
         )
     }
@@ -58,14 +62,17 @@ class PortfoliosList extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="portfolio-container">
         <h1>What is your risk level?</h1>
-        <h3>(Select one)</h3>
 
-        <button onClick={this.decrementNumber}> - </button>
-        <p> {this.state.number}</p>
-        <button onClick={this.incrementNumber}> + </button>
+        <div className="portfolio-selector">
+          <i className="fas fa-chevron-left" onClick={this.decrementNumber}></i>
+          <p>{this.state.number}</p>
+          <i className="fas fa-chevron-right" onClick={this.incrementNumber}></i>
+        </div>
 
+
+        {/* portfolio profile */}
         {this.getPortfolio()}
 
       </div>
