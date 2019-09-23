@@ -7,8 +7,8 @@ export const fetchPortfolios = (portfolios) => ({
   portfolios
 });
 
-export const fetchPortfolio = (portfolio) => ({
+export const fetchPortfolio = (portfolioId) => ({
   type: FETCH_PORTFOLIO, 
-  portfolio
+  portfolioId
 });
 

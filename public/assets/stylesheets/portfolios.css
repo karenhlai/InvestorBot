@@ -44,7 +44,7 @@ h1, h2, h3, p {
 
 .portfolio-profile {
   border: 1px solid #00a2e2;
-  width: 80%;
+  width: 60%;
   align-self: center;
 }
 
@@ -54,3 +54,11 @@ h1, h2, h3, p {
   padding: 20px;
   margin-top: 0;
 }
+
+.portfolio-profile a {
+  position: absolute;
+  width: 60%;
+  text-align: center;
+  padding-top: 10px;
+}
+

@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 import { fetchPortfolios, fetchPortfolio } from "../../actions/portfolio_actions";
 import Chart from 'chart.js';
 
@@ -8,15 +9,17 @@ class PortfoliosList extends React.Component {
     super(props);
 
     this.state = {
-      number: 1
+      number: 1,
+      dataset: [30, 20, 45, 5, 5], 
     }
   }
 
   componentDidMount() {
     this.props.fetchPortfolios();
     this.getPortfolio(0);
-    this.createChart();
+    // this.createChart();
   }
+
 
   incrementNumber = (e) => {
     e.preventDefault();
@@ -48,20 +51,20 @@ class PortfoliosList extends React.Component {
         return <div>FALSE!</div>;
       default: 
         const displayPortfolio = this.props.portfolios[this.state.number-1];
+        // const fDistribution = displayPortfolio.financial_distribution;
+        const myPortfolioUrl = `/manage/${displayPortfolio.portfolio_id}`;
         return (
           <div className="portfolio-profile">
-            <h3>
-              {displayPortfolio.portfolio_category}
-            </h3>
-            <p>
-              {displayPortfolio.portfolio_description}
-            </p>
+            <h3>{displayPortfolio.portfolio_category}</h3>
+            <p>{displayPortfolio.portfolio_description}</p>
+            <Link to={myPortfolioUrl}>Manage my Portfolio</Link>
           </div>
         )
     }
   }
 
-  createChart = (pData) =>  {
+
+  createChart() {
     const ctx = document.getElementById('myChart');
     const myChart = new Chart(ctx, {
       type: 'doughnut',
@@ -69,7 +72,7 @@ class PortfoliosList extends React.Component {
         labels: ['Bonds', 'Stocks', 'Real Estate', 'International Stocks', 'Exotic Motor Cars'],
         datasets: [{
           label: '% of financial distribution',
-          data: [12, 19, 3, 5, 2],
+          data: [30, 20, 45, 5, 5], 
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -89,22 +92,35 @@ class PortfoliosList extends React.Component {
           borderWidth: 1
         }]
       },
-      // options: {
-      //   scales: {
-      //     yAxes: [{
-      //       ticks: {
-      //         beginAtZero: true
-      //       }
-      //     }]
-      //   }
-      // }
+      options: {
+        animation: {
+          animateScale: true
+        }, 
+      }
     });
     return (
       myChart
-    )
-  }
+    );
+  };
+
+  // removeData = (chart) => {
+  //   // chart.data.labels.pop();
+  //   chart.data.datasets.forEach((dataset) => {
+  //     dataset.data.pop();
+  //   });
+  //   chart.update();
+  // }
+
+  // addData = (chart, label, data) => {
+  //   // chart.data.labels.push(label); use if labels are dynamic
+  //   chart.data.datasets.forEach((dataset) => {
+  //     dataset.data.push(data);
+  //   });
+  //   chart.update();
+  // }
 
   render() {
+
     return (
       <div className="portfolio-container">
         <h1>What is your risk level?</h1>
@@ -121,7 +137,6 @@ class PortfoliosList extends React.Component {
         
 
         <canvas id="myChart" width="400" height="400"></canvas>
-
 
       </div>
     )

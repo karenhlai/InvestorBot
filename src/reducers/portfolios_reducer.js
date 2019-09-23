@@ -12,10 +12,10 @@ export default (state = initialState, action) => {
       nextState = merge({}, state, action.portfolios);
       return nextState;
     case FETCH_PORTFOLIO:
-      nextState = merge({}, state, { [action.portfolio.id]: action.portfolio } );
-      return nextState;
-      debugger
-      return nextState[action.portfolio.id] = action.portfolio;
+      let newState = nextState[action.portfolioId];
+      // debugger
+       return newState;
+      // nextState = merge({}, state, action.portfolioId );
     default:
       return state;
   }
