@@ -110,9 +110,6 @@ class Transactions extends React.Component {
       if (transaction > 0) {
         p.innerText = (`Transfer $${transaction} from ${sortedCat[j]} to ${sortedCat[i]} `);
         div.appendChild(p);
-      } else {
-        p.innerText = ("No transfers necessary");
-        div.appendChild(p);
       }
     }
   } 
@@ -130,7 +127,6 @@ class Transactions extends React.Component {
           categories={categories}
           handleFormSubmit={this.handleFormSubmit}
         />
-        
  
         <div id="calculate-transactions"></div>
       </div>
