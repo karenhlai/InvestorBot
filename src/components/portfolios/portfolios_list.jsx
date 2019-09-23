@@ -10,53 +10,66 @@ class PortfoliosList extends React.Component {
 
     this.state = {
       number: 1,
-      dataset: [30, 20, 45, 5, 5], 
+      // dataset: [30, 20, 45, 5, 5], 
+      chart: null
     }
+
+    this.data = [];
   }
 
   componentDidMount() {
     this.props.fetchPortfolios();
+    this.createChart();
     this.getPortfolio(0);
-    // this.createChart();
   }
 
 
   incrementNumber = (e) => {
     e.preventDefault();
+    let incNum = this.state.number;
     
     if (this.state.number < 10) {
       this.setState({
-        number: this.state.number += 1
+        number: incNum += 1
       });
-      this.getPortfolio(this.state.number-1)
+      this.getPortfolio(incNum);
+      // debugger
+      this.removeData(this.state.chart);
+      this.addData(this.state.chart, this.data);
     }
   }
 
   decrementNumber = (e) => {
     e.preventDefault();
+    let decNum = this.state.number;
 
     if (this.state.number > 1) {
       this.setState({
-        number: this.state.number -= 1
+        number: decNum -= 1
       });
-      this.getPortfolio(this.state.number-1)
+      this.getPortfolio(decNum);
+      // debugger
+      this.removeData(this.state.chart);
+      this.addData(this.state.chart, this.data);
     }
   }
 
   getPortfolio = (id) => {
+    let portfolioId = this.state.number - 1; //decr. by 1 b/c idx's start at 0;
     switch (this.props.portfolios) {
       case null:
         return;
-      case false:
-        return <div>FALSE!</div>;
       default: 
-        const displayPortfolio = this.props.portfolios[this.state.number-1];
-        // const fDistribution = displayPortfolio.financial_distribution;
-        const myPortfolioUrl = `/manage/${displayPortfolio.portfolio_id}`;
+      const displayPortfolio = this.props.portfolios[portfolioId];
+        
+        this.data = displayPortfolio.financial_distribution;
+        const myPortfolioUrl = `/manage/${portfolioId}`;
         return (
-          <div className="portfolio-profile">
-            <h3>{displayPortfolio.portfolio_category}</h3>
-            <p>{displayPortfolio.portfolio_description}</p>
+          <div className="portfolio-profile-container">
+            <div className="portfolio-profile">
+              <h3>{displayPortfolio.portfolio_category}</h3>
+              <p>{displayPortfolio.portfolio_description}</p>
+            </div>
             <Link to={myPortfolioUrl}>Manage my Portfolio</Link>
           </div>
         )
@@ -64,7 +77,7 @@ class PortfoliosList extends React.Component {
   }
 
 
-  createChart() {
+  createChart = () => {
     const ctx = document.getElementById('myChart');
     const myChart = new Chart(ctx, {
       type: 'doughnut',
@@ -96,34 +109,39 @@ class PortfoliosList extends React.Component {
         animation: {
           animateScale: true
         }, 
+        title: {
+          display: true,
+          text: 'Ideal Portfolio',
+          fontSize: 15,
+        }
       }
     });
-    return (
-      myChart
-    );
+
+    this.setState({ chart: myChart });
   };
 
-  // removeData = (chart) => {
-  //   // chart.data.labels.pop();
-  //   chart.data.datasets.forEach((dataset) => {
-  //     dataset.data.pop();
-  //   });
-  //   chart.update();
-  // }
+  removeData = (chart) => {
+    // debugger
+    chart.config.data.datasets[0].data = [];
+    // .forEach((dataset) => {
+    //   dataset.data = [];
+    // });
+    chart.update();
+  }
 
-  // addData = (chart, label, data) => {
-  //   // chart.data.labels.push(label); use if labels are dynamic
-  //   chart.data.datasets.forEach((dataset) => {
-  //     dataset.data.push(data);
-  //   });
-  //   chart.update();
-  // }
+  addData = (chart, data) => {
+    chart.config.data.datasets[0].data = data;
+    // .forEach((dataset) => {
+    //   dataset.data.push(data);
+    // });
+    chart.update();
+  }
 
   render() {
 
     return (
       <div className="portfolio-container">
-        <h1>What is your risk level?</h1>
+        <h1>What is your risk temperament?</h1>
 
         <div className="portfolio-selector">
           <i className="fas fa-chevron-left" onClick={this.decrementNumber}></i>
@@ -135,9 +153,9 @@ class PortfoliosList extends React.Component {
         {/* portfolio profile */}
         {this.getPortfolio()}
         
-
+        <div className="chart-size">
         <canvas id="myChart" width="400" height="400"></canvas>
-
+        </div>
       </div>
     )
   }

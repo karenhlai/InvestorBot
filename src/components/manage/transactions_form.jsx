@@ -40,7 +40,7 @@ export const TransactionsForm = ({ categories, handleFormSubmit }) => (
         variant="outlined"
       />
     {/* </ThemeProvider> */}
-    <input type="submit" value="Submit"></input>
+    <input type="submit" value="Rebalance"></input>
   </form>
 );
 

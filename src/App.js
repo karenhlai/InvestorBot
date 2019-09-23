@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Redirect, Switch, Link } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import PortfoliosList from './components/portfolios/portfolios_list';
 import Transactions from './components/manage/transactions';
 

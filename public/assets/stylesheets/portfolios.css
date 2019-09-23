@@ -3,10 +3,6 @@ html {
   font-family: "Courier New", Courier, monospace;
 }
 
-body {
-  /* width: 100%; */
-}
-
 header {
   text-align: center;
 }
@@ -42,10 +38,14 @@ h1, h2, h3, p {
   padding: 10px;
 }
 
+.portfolio-profile-container {
+  width: 55%;
+  align-self: center;
+  align-content: center;
+}
+
 .portfolio-profile {
   border: 1px solid #00a2e2;
-  width: 60%;
-  align-self: center;
 }
 
 .portfolio-profile h3 {
@@ -55,11 +55,11 @@ h1, h2, h3, p {
   margin-top: 0;
 }
 
-.portfolio-profile a {
-  position: absolute;
-  width: 60%;
-  text-align: center;
-  padding-top: 10px;
+.portfolio-profile-container a {
+  /* width: 60%; */
+  padding: 10px 0px 10px 0px;
+  display: flex; 
+  justify-content: center;
 }
 
 .form-container {
@@ -67,20 +67,23 @@ h1, h2, h3, p {
   padding: 10px;
 }
 
-
 .form-container input:last-child {
   display: block;
   margin: 10px auto 0 auto;
   background-color: #00a2e2;
-  padding: 10px 20px 10px 20px;
+  padding: 15px 60px 15px 60px;
   border-radius: 5px;
   font-family: "Courier New", Courier, monospace;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: bold;
   color: #fff;
-
 }
 
+.chart-size {
+  width: 400px;
+  height: 400px;
+  margin: 0 auto;
+}
 .form-input {
   width: 20%;
 }
