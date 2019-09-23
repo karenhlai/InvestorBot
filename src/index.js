@@ -5,8 +5,6 @@ import Root from './root';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store = configureStore();
-  // const preloadedState = portfolios;
-  // let store = configureStore(preloadedState);
 
   // TESTING START
   window.getState = store.getState;

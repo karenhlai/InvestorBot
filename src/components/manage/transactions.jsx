@@ -6,11 +6,17 @@ import { TransactionsForm } from './transactions_form';
 class Transactions extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      "Bonds": null, 
+      "Stocks": null, 
+      "Real Estate": null, 
+      "International Stocks": null, 
+      "Exotic Motor Cars": null
+    }
   }
 
   componentDidMount() {
     this.displayIdealPortfolio(this.props.portfolio.financial_distribution);
-    console.log(this.props)
   }
 
   displayIdealPortfolio(fData) {
@@ -55,13 +61,21 @@ class Transactions extends React.Component {
   handleFormSubmit = (e) => {
     e.preventDefault();
     console.log("Form Submitted!")
-    console.log(e)
+    this.setState({
+      "Bonds": Number(e.target.Bonds.value), 
+      "Stocks": Number(e.target.Stocks.value), 
+      "Real Estate": Number(e.target.Real_Estate.value), 
+      "International Stocks": Number(e.target.International_Stocks.value), 
+      "Exotic Motor Cars": Number(e.target.Exotic_Motor_Cars.value), 
+
+    })
+    console.log(this.state)
+    // debugger
   }
 
-
   render() {
-    const categories = ['Bonds', 'Stocks', 'Real Estate', 'International Stocks', 'Exotic Motor Cars'];
-    
+    const categories = ['Bonds', 'Stocks', 'Real_Estate', 'International_Stocks', 'Exotic_Motor_Cars'];
+    console.log(this.state)
     return (
       <div>
         <h1>Manage My Finances</h1>
