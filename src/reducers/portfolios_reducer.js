@@ -1,6 +1,6 @@
 import merge from 'lodash/merge';
 import { FETCH_PORTFOLIOS, FETCH_PORTFOLIO } from '../actions/portfolio_actions';
-import initialState from '../data/porfolios';
+import initialState from '../data/portfolios';
 
 
 export default (state = initialState, action) => {

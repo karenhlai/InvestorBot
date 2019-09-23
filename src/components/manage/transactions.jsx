@@ -13,6 +13,8 @@ class Transactions extends React.Component {
       "International Stocks": null, 
       "Exotic Motor Cars": null
     }
+
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -58,24 +60,29 @@ class Transactions extends React.Component {
     );
   }
 
-  handleFormSubmit = (e) => {
+  async handleFormSubmit(e) {
     e.preventDefault();
-    console.log("Form Submitted!")
-    this.setState({
+    // console.log("Form Submitted!")
+    await this.setState({
       "Bonds": Number(e.target.Bonds.value), 
       "Stocks": Number(e.target.Stocks.value), 
       "Real Estate": Number(e.target.Real_Estate.value), 
       "International Stocks": Number(e.target.International_Stocks.value), 
       "Exotic Motor Cars": Number(e.target.Exotic_Motor_Cars.value), 
+    });
 
-    })
-    console.log(this.state)
-    // debugger
+    this.calculateTransactions();
   }
+
+  calculateTransactions = () => {
+    const categories = Object.keys(this.state);
+    const inputVals = Object.values(this.state);
+    const desiredPercentages = this.props.portfolio.financial_distribution;
+    debugger
+  } 
 
   render() {
     const categories = ['Bonds', 'Stocks', 'Real_Estate', 'International_Stocks', 'Exotic_Motor_Cars'];
-    console.log(this.state)
     return (
       <div>
         <h1>Manage My Finances</h1>
