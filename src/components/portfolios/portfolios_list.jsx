@@ -10,7 +10,6 @@ class PortfoliosList extends React.Component {
 
     this.state = {
       number: 1,
-      // dataset: [30, 20, 45, 5, 5], 
       chart: null
     }
 
