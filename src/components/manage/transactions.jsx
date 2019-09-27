@@ -76,6 +76,7 @@ class Transactions extends React.Component {
       "Exotic Motor Cars": Number(e.target.Exotic_Motor_Cars.value), 
     });
 
+    console.log(this.state)
     this.calculateTransactions();
   }
 

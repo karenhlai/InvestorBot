@@ -1,51 +1,90 @@
 let idealPercentages = [20, 20, 40, 10, 10];
-let categories = ["Bonds", "Stocks", "Real Estate", "International Stocks", "Cars"];
-let inputs = [100, 200, 300, 400, 500];
-let inputs = [100, 200, 300, 400, 500];
+// let categories = ["Bonds", "Stocks", "Real Estate", "International Stocks", "Cars"];
+// let inputs = [100, 200, 300, 400, 500];
+let inputs = {
+  "Bonds": 100, 
+  "Stocks": 200, 
+  "Real Estate": 300, 
+  "International Stocks": 400, 
+  "Cars": 500
+} 
 
-let total = 1500;
-let correctAmount = [];
-let queue = [];
-let leftoverSurplus = [];
-let leftoverDeficit = [];
 
-for (let i = 0; i < inputs.length; i++) {
-  let input = inputs[i];
-  let category = categories[i];
+function balance(inputs, idealPercentages) {
+  let total = 1500;
+  const categories = Object.keys(inputs);
 
-  let idealPercent = idealPercentages[i];
-  let idealVal = (total * idealPercent) / 100;
+  let sortedCategories = categories.sort((cat1, cat2) => inputs[cat1] - inputs[cat2]);
+  // console.log(sortedCategories)
+  const sortedValues = sortedCategories.map((category, i) => {
+    let idealValue = (total * idealPercentages[i]) / 100;
+    return inputs[category] - idealValue;
+  });
+  // console.log(sortedValues) [ -200, -100, -300, 250, 350 ]
+
+  let i = 0; 
+  let j = sortedValues.length - 1;
   
-  if (idealVal === input) {
-    correctAmount.push(input);
-    inputs.splice(i, 1); //splice away the correct amount
-  } else if (input > idealVal) {
-    let leftover = input - idealVal;
-    // leftoverSurplus.push({category, input, leftover})
+  while (i < j) {
     
-  } else if (input < idealVal) {
-    let missing = input - idealVal;
-    // leftoverDeficit.push({category, input, missing})
   }
 
+
+}
+
+balance(inputs, idealPercentages)
+
+
+
+
+// 
+
+const payments = {
+  John: 400,
+  Jane: 1000,
+  Bob: 100,
+  Dave: 900,
 };
-// console.log(leftoverSurplus) //should hold neg value
-// console.log(leftoverDeficit) //should hold pos value
-// console.log(correctAmount)
 
-function balance(arr) {
-  
-  
+function splitPayments(payments) {
+  const people = Object.keys(payments);
+  const valuesPaid = Object.values(payments);
+
+  const sum = valuesPaid.reduce((acc, curr) => curr + acc);
+  const mean = sum / people.length;
+  // console.log(mean)
+
+  const sortedPeople = people.sort((personA, personB) => payments[personA] - payments[personB]);
+  // console.log(sortedPeople)
+  const sortedValuesPaid = sortedPeople.map((person) => payments[person] - mean);
+  // console.log(sortedValuesPaid)
+
   let i = 0;
-  
-  while (arr.length > 0) {
-    let maxVal = Math.max(...arr);
-    let minVal = Math.min(...arr);
+  let j = sortedPeople.length - 1;
+  let debt;
 
-    if (maxVal - minVal === 0) {
-      correctAmount.push(maxVal, maxVal);
-      let newArr = correctAmount.filter(el => el !== minVal && el !== maxVal);
-      balance(newArr);
-    } else if ()
+  while (i < j) {
+    debt = Math.min(-(sortedValuesPaid[i]), sortedValuesPaid[j]);
+    console.log(debt)
+    sortedValuesPaid[i] += debt;
+    sortedValuesPaid[j] -= debt;
+
+    console.log(`${sortedPeople[i]} owes ${sortedPeople[j]} $${debt}`);
+
+    if (sortedValuesPaid[i] === 0) {
+      i++;
+    }
+
+    if (sortedValuesPaid[j] === 0) {
+      j--;
+    }
   }
 }
+
+splitPayments(payments);
+
+/*
+  C owes B $400
+  C owes D $100
+  A owes D $200
+*/
