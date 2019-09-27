@@ -16,6 +16,7 @@ export default (state = initialState, action) => {
       // debugger
        return newState;
       // nextState = merge({}, state, action.portfolioId );
+    
     default:
       return state;
   }

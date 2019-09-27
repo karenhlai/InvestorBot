@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import { fetchPortfolios, fetchPortfolio } from "../../actions/portfolio_actions";
+import { increment, decrement } from "../../actions/portfolio_actions";
 import Chart from 'chart.js';
 
 class PortfoliosList extends React.Component {
@@ -9,40 +10,40 @@ class PortfoliosList extends React.Component {
     super(props);
 
     this.state = {
-      number: 1,
+      number: this.props.counter,
       chart: null
     }
+    // debugger
 
     this.data = [];
   }
 
-  async componentDidMount() {
-    const number = localStorage.getItem('number');
-    const parseNum = Number(number);
-
+  componentDidMount() {
+    // const number = localStorage.getItem('number');
+    // const parseNum = Number(number);
 
     this.props.fetchPortfolios();
     this.createChart();
     this.getPortfolio();
-    this.setState({
-      number: parseNum
-    })
+    // this.setState({
+    //   number: parseNum
+    // })
   }
 
 
-  incrementNumber = async (e) => {
+  incrementNumber = (e) => {
     e.preventDefault();
     let input = this.state.number;
     let incNum = input + 1;
     
     if (input < 10) {
-      await this.setState({
+      this.setState({
         number: incNum
       });
-
+      this.props.increment();
       
-      localStorage.setItem('number', incNum);
-      await this.getPortfolio(input);
+      // localStorage.setItem('number', incNum);
+      this.getPortfolio(input);
 
       // debugger
       this.removeData(this.state.chart);
@@ -50,19 +51,20 @@ class PortfoliosList extends React.Component {
     }
   }
 
-  decrementNumber = async (e) => {
+  decrementNumber = (e) => {
     e.preventDefault();
     let input = this.state.number;
     let decNum = input - 1;
 
     if (input > 1) {
-      await this.setState({
+      this.setState({
         number: decNum
       });
 
+      this.props.decrement();
 
-      localStorage.setItem('number', decNum);
-      await this.getPortfolio(input);
+      // localStorage.setItem('number', decNum);
+      this.getPortfolio(input);
 
       // debugger
       this.removeData(this.state.chart);
@@ -197,16 +199,19 @@ class PortfoliosList extends React.Component {
 
 const mapStateToProps = state => {
   const portfolios = state.portfolios;
-  // debugger
+  const counter = state.counter;
   return ({
     portfolios,
+    counter
   })
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchPortfolios: () => dispatch(fetchPortfolios()),
-    fetchPortfolio: (id) => dispatch(fetchPortfolio(id)),
+    // fetchPortfolio: (id) => dispatch(fetchPortfolio(id)),
+    increment: () => dispatch(increment()), 
+    decrement: () => dispatch(decrement())
   }
 }
 
