@@ -22,7 +22,7 @@ h1, h2, h3, p {
 
 
 .portfolio-selector {
-  margin: 0 auto;
+  align-self: center;
 }
 
 .portfolio-selector p {
@@ -57,10 +57,10 @@ h1, h2, h3, p {
 }
 
 .portfolio-profile-container a {
-  /* width: 60%; */
   padding: 10px 0px 10px 0px;
   display: flex; 
   justify-content: center;
+  font-weight: bold;
 }
 
 .form-container {
