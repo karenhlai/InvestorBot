@@ -28,13 +28,9 @@ function balance(inputs, idealPercentages) {
   // console.log(sortedCategories)
 
   sortedCategories.forEach((category, i) => {
-
     let idealPercent = idealPercentages[category];
-    // console.log(idealPercent)
     let idealValue = (total * idealPercent) / 100;
-    // console.log(idealValue)
     let remainingValue = inputs[category] - idealValue;
-
     if (remainingValue !== 0) {
       unbalanced.push(remainingValue);
       unbalancedCategories.push(sortedCategories[i])
@@ -55,7 +51,7 @@ function balance(inputs, idealPercentages) {
       unbalanced[j] = null, unbalanced[flipIdx] = null;
       unbalancedCategories[j] = null, unbalancedCategories[flipIdx] = null;
 
-      
+
       unbalanced = unbalanced.filter(el => el !== null);
       unbalancedCategories = unbalancedCategories.filter(el => el !== null);
     } else {

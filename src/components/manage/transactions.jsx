@@ -85,6 +85,8 @@ class Transactions extends React.Component {
 
   async handleFormSubmit(e) {
     e.preventDefault();
+    document.getElementById("calculate-transactions").innerHTML = "";
+    
     // console.log("Form Submitted!")
     await this.setState({
       "Bonds": Number(e.target.Bonds.value), 
@@ -100,37 +102,73 @@ class Transactions extends React.Component {
 
   calculateTransactions = () => {
     const div = document.getElementById("calculate-transactions");
-    let thatState = this.state;
-    const categories = Object.keys(thatState);
-    const inputVals = Object.values(thatState);
-    // const idealPercentages = this.props.portfolio.financial_distribution;
-    // debugger
 
-    const sum = inputVals.reduce((acc, curr) => curr + acc);
-    const avg = sum / inputVals.length;
+    let inputs = this.state;
+    let idealPercentages = {};
+    Object.keys(inputs).forEach((category, i) => {
+      idealPercentages[category] = this.props.portfolio.financial_distribution[i];
+    })
     
-    const sortedCat = categories.sort((cat1, cat2) => thatState[cat1] - thatState[cat2]);
+    let unbalanced = [];
+    let unbalancedCategories = [];
+    const total = Object.values(inputs).reduce((acc, curr) => curr + acc);
+    const categories = Object.keys(inputs);
+    let sortedCategories = categories.sort((cat1, cat2) => inputs[cat1] - inputs[cat2]);
 
-    const sortedInputVals = sortedCat.map(cat => thatState[cat] - avg);
+    sortedCategories.forEach((category, i) => {
+      let idealPercent = idealPercentages[category];
+      let idealValue = (total * idealPercent) / 100;
+      let remainingValue = inputs[category] - idealValue;
+      if (remainingValue !== 0) {
+        unbalanced.push(remainingValue);
+        unbalancedCategories.push(sortedCategories[i])
+      }
+    });
 
     let i = 0;
-    let j = sortedInputVals.length - 1;
-    let transaction;
+    let j = unbalanced.length - 1;
 
     while (i < j) {
-      transaction = Math.min(-(sortedInputVals[i]), sortedInputVals[j]);
-      sortedInputVals[i] += transaction;
-      sortedInputVals[j] += transaction;
-      
-      if (sortedInputVals[i] === 0) i++;
-      if (sortedInputVals[j] === 0) j--;
+      let currentEl = unbalanced[j];
 
-      let p = document.createElement("p");
-      if (transaction > 0) {
-        p.innerText = (`Transfer $${transaction} from ${sortedCat[j]} to ${sortedCat[i]} `);
-        div.appendChild(p);
+      let flip = -(currentEl);
+      let flipIdx = unbalanced.indexOf(flip);
+
+      if (flipIdx !== -1 && currentEl > 0) { //if flip exists and j is positive
+        let roundedVal = Math.round(100 * currentEl) / 100;
+        // statements.push(`Transfer $${roundedVal} from ${unbalancedCategories[j]} to ${unbalancedCategories[flipIdx]}`);
+
+        let li = document.createElement("li");
+        li.innerText = (`Transfer $${roundedVal} from ${unbalancedCategories[j]} to ${unbalancedCategories[flipIdx]}`);
+        div.appendChild(li);
+
+        unbalanced[j] = null;
+        unbalanced[flipIdx] = null;
+        unbalancedCategories[j] = null; 
+        unbalancedCategories[flipIdx] = null;
+
+
+        unbalanced = unbalanced.filter(el => el !== null);
+        unbalancedCategories = unbalancedCategories.filter(el => el !== null);
+      } else {
+        unbalanced[j - 1] = unbalanced[j - 1] + currentEl;
+        let roundedVal = Math.round(100 * currentEl) / 100;
+        // statements.push(`Transfer $${roundedVal} from ${unbalancedCategories[j]} to ${unbalancedCategories[j - 1]}`);
+
+
+        let li = document.createElement("li");
+        li.innerText = (`Transfer $${roundedVal} from ${unbalancedCategories[j]} to ${unbalancedCategories[j - 1]}`);
+        div.appendChild(li);
       }
+
+      j--;
     }
+    if (!div.firstChild) {
+      let li = document.createElement("li");
+      li.innerText = ('No transactions necessary');
+      div.appendChild(li);
+    }
+    
   } 
 
   render() {
@@ -147,6 +185,7 @@ class Transactions extends React.Component {
           handleFormSubmit={this.handleFormSubmit}
         />
  
+        <h3>Transactions to be made:</h3>
         <div id="calculate-transactions"></div>
       </div>
     )
