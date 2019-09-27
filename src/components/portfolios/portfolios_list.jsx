@@ -16,10 +16,10 @@ class PortfoliosList extends React.Component {
     this.data = [];
   }
 
-  componentDidMount() {
-    const number = localStorage.getItem('number');
-    const parseNum = Number(number);
-    this.setState({
+  async componentDidMount() {
+    const number = await localStorage.getItem('number');
+    const parseNum = await Number(number);
+    await this.setState({
       number: parseNum
     })
 
@@ -69,7 +69,7 @@ class PortfoliosList extends React.Component {
     }
   }
 
-  getPortfolio = () => {
+  getPortfolio = () => { 
     let portfolioId = this.state.number - 1; //decr. by 1 b/c idx's start at 0;
     switch (this.props.portfolios) {
       case null:
