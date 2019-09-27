@@ -17,44 +17,59 @@ class PortfoliosList extends React.Component {
   }
 
   componentDidMount() {
+    const number = localStorage.getItem('number');
+    const parseNum = Number(number);
+    this.setState({
+      number: parseNum
+    })
+
     this.props.fetchPortfolios();
     this.createChart();
-    this.getPortfolio(0);
+    this.getPortfolio();
   }
 
 
-  incrementNumber = (e) => {
+  incrementNumber = async (e) => {
     e.preventDefault();
-    let incNum = this.state.number;
+    let input = this.state.number;
+    let incNum = input + 1;
     
-    if (this.state.number < 10) {
-      this.setState({
-        number: incNum += 1
+    if (input < 10) {
+      await this.setState({
+        number: incNum
       });
 
-      this.getPortfolio(incNum);
+      
+      localStorage.setItem('number', incNum);
+      await this.getPortfolio(input);
+
       // debugger
       this.removeData(this.state.chart);
       this.addData(this.state.chart, this.data);
     }
   }
 
-  decrementNumber = (e) => {
+  decrementNumber = async (e) => {
     e.preventDefault();
-    let decNum = this.state.number;
+    let input = this.state.number;
+    let decNum = input - 1;
 
-    if (this.state.number > 1) {
-      this.setState({
-        number: decNum -= 1
+    if (input > 1) {
+      await this.setState({
+        number: decNum
       });
-      this.getPortfolio(decNum);
+
+
+      localStorage.setItem('number', decNum);
+      await this.getPortfolio(input);
+
       // debugger
       this.removeData(this.state.chart);
       this.addData(this.state.chart, this.data);
     }
   }
 
-  getPortfolio = (id) => {
+  getPortfolio = () => {
     let portfolioId = this.state.number - 1; //decr. by 1 b/c idx's start at 0;
     switch (this.props.portfolios) {
       case null:
@@ -85,7 +100,7 @@ class PortfoliosList extends React.Component {
         labels: ['Bonds', 'Stocks', 'Real Estate', 'International Stocks', 'Exotic Motor Cars'],
         datasets: [{
           label: '% of financial distribution',
-          data: [30, 20, 45, 5, 5], 
+          data: this.data, 
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -113,6 +128,23 @@ class PortfoliosList extends React.Component {
           display: true,
           text: 'Ideal Portfolio',
           fontSize: 15,
+        },
+        tooltips: {
+          callbacks: {
+            label: function (tooltipItem, data) {
+              let label = data.datasets[tooltipItem.datasetIndex].label || '';
+              let myData = data.datasets[0].data[tooltipItem.index] || '';
+
+              if (label) {
+                label += ': ';
+              }
+
+              myData += Math.round(tooltipItem.yLabel * 100) / 100;
+
+              // console.log(tooltipItem)
+              return label + myData + '%';
+            }
+          }
         }
       }
     });

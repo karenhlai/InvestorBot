@@ -57,6 +57,24 @@ class Transactions extends React.Component {
           display: true,
           text: 'Your Ideal Portfolio', 
           fontSize: 15,
+        }, 
+        tooltips: {
+          callbacks: {
+            label: function (tooltipItem, data) {
+              let label = data.datasets[tooltipItem.datasetIndex].label || '';
+              let myData = data.datasets[0].data[tooltipItem.index] || '';
+
+              if (label) {
+                label += ': ';
+              }
+
+              myData += Math.round(tooltipItem.yLabel * 100) / 100;
+
+
+              // console.log(tooltipItem)
+              return label + myData + '%';
+            }
+          }
         }
       }
     });
