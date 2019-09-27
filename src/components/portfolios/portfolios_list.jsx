@@ -31,6 +31,7 @@ class PortfoliosList extends React.Component {
       this.setState({
         number: incNum += 1
       });
+
       this.getPortfolio(incNum);
       // debugger
       this.removeData(this.state.chart);
