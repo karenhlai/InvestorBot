@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
-import { fetchPortfolios, fetchPortfolio } from "../../actions/portfolio_actions";
+import { fetchPortfolios } from "../../actions/portfolio_actions";
 import { increment, decrement } from "../../actions/portfolio_actions";
 import Chart from 'chart.js';
 
@@ -209,7 +209,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchPortfolios: () => dispatch(fetchPortfolios()),
-    // fetchPortfolio: (id) => dispatch(fetchPortfolio(id)),
     increment: () => dispatch(increment()), 
     decrement: () => dispatch(decrement())
   }
