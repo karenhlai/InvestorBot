@@ -1,6 +1,7 @@
 html {
   background-color: #fff;
   font-family: "Courier New", Courier, monospace;
+  width: 100vw;
 }
 
 header {
@@ -51,7 +52,7 @@ h1, h2, h3, p {
 .portfolio-profile h3 {
   background-color: #00a2e2;
   color: white;
-  padding: 20px;
+  padding: 10px;
   margin-top: 0;
 }
 
@@ -94,9 +95,15 @@ h1, h2, h3, p {
 
 #calculate-transactions {
   min-height: 200px;
-  padding: 20px;
+  padding: 18px;
   border: 1px double #d9dadc;
   border-radius: 5px;
+}
+
+#calculate-transactions li {
+  list-style-type: circle;
+  padding: 3px 0px 3px 0px;
+  border-bottom: 1px solid #d9dadc;
 }
 
 
