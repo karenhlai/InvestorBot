@@ -17,15 +17,16 @@ class PortfoliosList extends React.Component {
   }
 
   async componentDidMount() {
-    const number = await localStorage.getItem('number');
-    const parseNum = await Number(number);
-    await this.setState({
-      number: parseNum
-    })
+    const number = localStorage.getItem('number');
+    const parseNum = Number(number);
+
 
     this.props.fetchPortfolios();
     this.createChart();
     this.getPortfolio();
+    this.setState({
+      number: parseNum
+    })
   }
 
 
