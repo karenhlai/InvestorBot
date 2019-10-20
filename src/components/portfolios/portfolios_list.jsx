@@ -43,7 +43,7 @@ class PortfoliosList extends React.Component {
       this.props.increment();
       
       // localStorage.setItem('number', incNum);
-      this.getPortfolio(input);
+      this.getPortfolio(this.state.number);
 
       this.removeData(this.state.chart);
       this.addData(this.state.chart, this.data);
@@ -63,7 +63,7 @@ class PortfoliosList extends React.Component {
       this.props.decrement();
 
       // localStorage.setItem('number', decNum);
-      this.getPortfolio(input);
+      this.getPortfolio(this.state.number);
 
       // debugger
       this.removeData(this.state.chart);
