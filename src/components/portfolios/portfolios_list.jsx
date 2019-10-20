@@ -15,8 +15,8 @@ class PortfoliosList extends React.Component {
       chart: null
     }
 
-    this.incrementNumber = this.incrementNumber.bind(this);
-    this.decrementNumber = this.decrementNumber.bind(this);
+    // this.incrementNumber = this.incrementNumber.bind(this);
+    // this.decrementNumber = this.decrementNumber.bind(this);
     // debugger
   }
 
@@ -33,7 +33,7 @@ class PortfoliosList extends React.Component {
   }
 
 
-  async incrementNumber(e) {
+  incrementNumber = async (e) => {
     e.preventDefault();
     const number = this.state.number + 1;
     const displayPortfolio = this.props.portfolios[number-1]; //pId: dec for Idx
@@ -52,7 +52,7 @@ class PortfoliosList extends React.Component {
     }
   }
 
-  async decrementNumber(e) {
+  decrementNumber = async (e) => {
     e.preventDefault();
     const number = this.state.number - 1;
     const displayPortfolio = this.props.portfolios[number-1]; // pId: dec for Idx
@@ -170,7 +170,7 @@ class PortfoliosList extends React.Component {
   }
 
   render() {
-    console.log(this.state)
+    // console.log(this.state)
 
     return (
       <div className="portfolio-container">
