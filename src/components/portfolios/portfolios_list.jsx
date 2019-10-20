@@ -22,7 +22,7 @@ class PortfoliosList extends React.Component {
     // const number = localStorage.getItem('number');
     // const parseNum = Number(number);
 
-    this.props.fetchPortfolios();
+    // this.props.fetchPortfolios();
     this.createChart();
     this.getPortfolio();
     // this.setState({
