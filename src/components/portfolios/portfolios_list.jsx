@@ -11,11 +11,13 @@ class PortfoliosList extends React.Component {
 
     this.state = {
       number: this.props.counter,
+      displayPortfolio: this.props.portfolios[this.props.counter - 1],
       chart: null
     }
-    // debugger
 
-    this.data = [];
+    this.incrementNumber = this.incrementNumber.bind(this);
+    this.decrementNumber = this.decrementNumber.bind(this);
+    // debugger
   }
 
   componentDidMount() {
@@ -23,69 +25,66 @@ class PortfoliosList extends React.Component {
     // const parseNum = Number(number);
 
     // this.props.fetchPortfolios();
-    this.createChart();
     this.getPortfolio();
+    this.createChart();
     // this.setState({
     //   number: parseNum
     // })
   }
 
 
-  incrementNumber = (e) => {
+  async incrementNumber(e) {
     e.preventDefault();
-    let input = this.state.number;
-    let incNum = input + 1;
+    const number = this.state.number + 1;
+    const displayPortfolio = this.props.portfolios[number-1]; //pId: dec for Idx
     
-    if (input < 10) {
+    if (this.state.number < 10) {
       this.setState({
-        number: incNum
+        number,
+        displayPortfolio
       });
-      this.props.increment();
-      
-      // localStorage.setItem('number', incNum);
-      this.getPortfolio(this.state.number);
 
-      this.removeData(this.state.chart);
-      this.addData(this.state.chart, this.data);
+      this.props.increment();
+      // localStorage.setItem('number', incNum);
+      this.getPortfolio();
+      await this.removeData(this.state.chart);
+      await this.addData(this.state.chart, this.state.displayPortfolio.financial_distribution);
     }
+    
   }
 
-  decrementNumber = (e) => {
+  async decrementNumber(e) {
     e.preventDefault();
-    let input = this.state.number;
-    let decNum = input - 1;
+    const number = this.state.number - 1;
+    const displayPortfolio = this.props.portfolios[number-1]; // pId: dec for Idx
+    // const data = displayPortfolio.financial_distribution;
 
-    if (input > 1) {
+    if (this.state.number > 1) {
       this.setState({
-        number: decNum
+        number, 
+        displayPortfolio
       });
 
       this.props.decrement();
-
       // localStorage.setItem('number', decNum);
-      this.getPortfolio(this.state.number);
-
-      // debugger
-      this.removeData(this.state.chart);
-      this.addData(this.state.chart, this.data);
+      this.getPortfolio();
+      await this.removeData(this.state.chart);
+      await this.addData(this.state.chart, this.state.displayPortfolio.financial_distribution);
     }
   }
 
   getPortfolio = () => { 
-    let portfolioId = this.state.number - 1; //decr. by 1 b/c idx's start at 0;
+    const portfolioId = this.state.number - 1; //decr. by 1 b/c idx's start at 0;
     switch (this.props.portfolios) {
       case null:
         return;
       default: 
-      const displayPortfolio = this.props.portfolios[portfolioId];
-        
-        this.data = displayPortfolio.financial_distribution;
         const myPortfolioUrl = `/manage/${portfolioId}`;
         return (
           <div className="portfolio-profile-container">
             <div className="portfolio-profile">
-              <h3>{displayPortfolio.portfolio_category}</h3>
-              <p>{displayPortfolio.portfolio_description}</p>
+              <h3>{this.state.displayPortfolio.portfolio_category}</h3>
+              <p>{this.state.displayPortfolio.portfolio_description}</p>
             </div>
             <Link to={myPortfolioUrl}>Manage my Portfolio</Link>
           </div>
@@ -96,13 +95,14 @@ class PortfoliosList extends React.Component {
 
   createChart = () => {
     const ctx = document.getElementById('myChart');
+    // debugger
     const myChart = new Chart(ctx, {
       type: 'doughnut',
       data: {
         labels: ['Bonds', 'Stocks', 'Real Estate', 'International Stocks', 'Exotic Motor Cars'],
         datasets: [{
           label: '% of financial distribution',
-          data: this.data, 
+          data: this.state.displayPortfolio.financial_distribution, 
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
@@ -172,6 +172,7 @@ class PortfoliosList extends React.Component {
   }
 
   render() {
+    console.log(this.state)
 
     return (
       <div className="portfolio-container">
@@ -201,7 +202,7 @@ const mapStateToProps = state => {
   const counter = state.counter;
   return ({
     portfolios,
-    counter
+    counter, 
   })
 };
 
