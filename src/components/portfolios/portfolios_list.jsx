@@ -45,7 +45,6 @@ class PortfoliosList extends React.Component {
       // localStorage.setItem('number', incNum);
       this.getPortfolio(input);
 
-      // debugger
       this.removeData(this.state.chart);
       this.addData(this.state.chart, this.data);
     }
