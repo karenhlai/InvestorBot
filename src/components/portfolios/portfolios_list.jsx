@@ -50,14 +50,12 @@ class PortfoliosList extends React.Component {
       await this.removeData(this.state.chart);
       await this.addData(this.state.chart, this.state.displayPortfolio.financial_distribution);
     }
-    
   }
 
   async decrementNumber(e) {
     e.preventDefault();
     const number = this.state.number - 1;
     const displayPortfolio = this.props.portfolios[number-1]; // pId: dec for Idx
-    // const data = displayPortfolio.financial_distribution;
 
     if (this.state.number > 1) {
       this.setState({
@@ -74,7 +72,7 @@ class PortfoliosList extends React.Component {
   }
 
   getPortfolio = () => { 
-    const portfolioId = this.state.number - 1; //decr. by 1 b/c idx's start at 0;
+    const portfolioId = this.state.number - 1; //pId: dec for Idx
     switch (this.props.portfolios) {
       case null:
         return;
