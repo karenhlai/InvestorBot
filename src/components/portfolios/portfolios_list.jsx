@@ -171,7 +171,7 @@ class PortfoliosList extends React.Component {
 
   render() {
     // console.log(this.state)
-    debugger
+    // debugger
     return (
       <div className="portfolio-container">
         <h1>What is your risk temperament?</h1>
