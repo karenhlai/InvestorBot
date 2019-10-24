@@ -83,21 +83,23 @@ class Transactions extends React.Component {
     );
   }
 
-  async handleFormSubmit(e) {
+  handleFormSubmit(e) {
     e.preventDefault();
     document.getElementById("calculate-transactions").innerHTML = "";
     
     // console.log("Form Submitted!")
-    await this.setState({
+    this.setState({
       "Bonds": Number(e.target.Bonds.value), 
       "Stocks": Number(e.target.Stocks.value), 
       "Real Estate": Number(e.target.Real_Estate.value), 
       "International Stocks": Number(e.target.International_Stocks.value), 
       "Exotic Motor Cars": Number(e.target.Exotic_Motor_Cars.value), 
-    });
+    }, () => 
+       this.calculateTransactions() 
+       );
 
     // console.log(this.state)
-    this.calculateTransactions();
+    // this.calculateTransactions();
   }
 
   calculateTransactions = () => {
