@@ -94,9 +94,9 @@ h1, h2, h3, p {
   margin-top: 10px;
 }
 
-.form-input :first-child {
+/* .form-input :first-child {
   background: red;
-}
+} */
 
 
 #calculate-transactions {

@@ -5,7 +5,7 @@ export const TransactionsForm = ({ categories, handleFormSubmit }) => (
   <form className="form-container" onSubmit={handleFormSubmit}>
     { categories.map((category, id) => {
       return (
-        <ThemeProvider>
+        // <ThemeProvider>
           <TextField
             className="form-input"
             type="number"
@@ -14,7 +14,7 @@ export const TransactionsForm = ({ categories, handleFormSubmit }) => (
             name={category}
             variant="outlined"
             />
-        </ThemeProvider>
+        // </ThemeProvider>
         );
       })
     }
