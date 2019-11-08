@@ -25,7 +25,7 @@ function balance(inputs, idealPercentages) {
   let unbalancedCategories = [];
 
   let sortedCategories = categories.sort((cat1, cat2) => inputs[cat1] - inputs[cat2]);
-  // console.log(sortedCategories)
+  console.log(sortedCategories)
 
   sortedCategories.forEach((category, i) => {
     let idealPercent = idealPercentages[category];
@@ -57,7 +57,7 @@ function balance(inputs, idealPercentages) {
     } else {
       unbalanced[j - 1] = unbalanced[j - 1] + currentEl;
       statements.push(`Transfer $${currentEl} from ${unbalancedCategories[j]} to ${unbalancedCategories[j - 1]}`);
-    }
+    } 
 
     j--;
   }
@@ -67,6 +67,5 @@ function balance(inputs, idealPercentages) {
 }
 
 balance(inputs, idealPercentages)
-
 
 
