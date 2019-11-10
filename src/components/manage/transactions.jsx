@@ -83,7 +83,7 @@ class Transactions extends React.Component {
 
   handleFormSubmit = (e) => {
     e.preventDefault();
-    document.getElementById("calculate-transactions").innerHTML = "";
+    document.getElementById("calculate-transactions").innerHTML = ""; //clear old submits
     
     this.setState({
       "Bonds": Number(e.target.Bonds.value), 
@@ -108,6 +108,10 @@ class Transactions extends React.Component {
     let unbalanced = [];
     let unbalancedCategories = [];
     const total = Object.values(inputs).reduce((acc, curr) => curr + acc);
+    if (total === 0) {
+      alert('Must enter $ value greater than 0!');
+      return;
+    };
     const categories = Object.keys(inputs);
     let sortedCategories = categories.sort((cat1, cat2) => inputs[cat1] - inputs[cat2]);
 

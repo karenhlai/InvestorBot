@@ -1,5 +1,5 @@
 import merge from 'lodash/merge';
-import { FETCH_PORTFOLIOS, FETCH_PORTFOLIO } from '../actions/portfolio_actions';
+import { FETCH_PORTFOLIOS } from '../actions/portfolio_actions';
 import initialState from '../data/portfolios';
 
 
