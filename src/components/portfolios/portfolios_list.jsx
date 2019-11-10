@@ -14,24 +14,12 @@ class PortfoliosList extends React.Component {
       displayPortfolio: this.props.portfolios[this.props.counter - 1],
       chart: null
     }
-
-    // this.incrementNumber = this.incrementNumber.bind(this);
-    // this.decrementNumber = this.decrementNumber.bind(this);
-    // debugger
   }
 
   componentDidMount() {
-    // const number = localStorage.getItem('number');
-    // const parseNum = Number(number);
-
-    // this.props.fetchPortfolios();
     this.getPortfolio();
     this.createChart();
-    // this.setState({
-    //   number: parseNum
-    // })
   }
-
 
   incrementNumber = async (e) => {
     e.preventDefault();
@@ -153,25 +141,16 @@ class PortfoliosList extends React.Component {
   };
 
   removeData = (chart) => {
-    // debugger
     chart.config.data.datasets[0].data = [];
-    // .forEach((dataset) => {
-    //   dataset.data = [];
-    // });
     chart.update();
   }
 
   addData = (chart, data) => {
     chart.config.data.datasets[0].data = data;
-    // .forEach((dataset) => {
-    //   dataset.data.push(data);
-    // });
     chart.update();
   }
 
   render() {
-    // console.log(this.state)
-    // debugger
     return (
       <div className="portfolio-container">
         <h1>What is your risk temperament?</h1>
