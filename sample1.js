@@ -54,6 +54,9 @@ function balance(inputs, idealPercentages) {
     if (flipIdx !== -1 && val > 0) {
       statements.push(`Transfer ${val} from ${cats[i]} to ${cats[flipIdx]}`)
     }
+
+    
+  
   })
   
   

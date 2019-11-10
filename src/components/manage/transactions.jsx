@@ -13,8 +13,6 @@ class Transactions extends React.Component {
       "International Stocks": null, 
       "Exotic Motor Cars": null
     }
-
-    this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -83,11 +81,10 @@ class Transactions extends React.Component {
     );
   }
 
-  handleFormSubmit(e) {
+  handleFormSubmit = (e) => {
     e.preventDefault();
     document.getElementById("calculate-transactions").innerHTML = "";
     
-    // console.log("Form Submitted!")
     this.setState({
       "Bonds": Number(e.target.Bonds.value), 
       "Stocks": Number(e.target.Stocks.value), 
@@ -97,9 +94,6 @@ class Transactions extends React.Component {
     }, () => 
        this.calculateTransactions() 
        );
-
-    // console.log(this.state)
-    // this.calculateTransactions();
   }
 
   calculateTransactions = () => {
