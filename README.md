@@ -11,7 +11,7 @@ To run this project:
 Features: 
 - User is presented all portfolio levels and should be able to select a portfolio level
 - Upon selection, the user should be able to input their own funds and receive recommendations on how to reblance their funds
-- Recommmendations should reflect the number of minimal number of transactions required to react Ideal Portfolio
+- Recommmendations should reflect the minimal number of transactions required to achieve the Ideal Portfolio
 
 <img src="public/assets/images/InvestorBot.gif" />
 
