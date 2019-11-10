@@ -120,23 +120,21 @@ class PortfoliosList extends React.Component {
         tooltips: {
           callbacks: {
             label: function (tooltipItem, data) {
-              let label = data.datasets[tooltipItem.datasetIndex].label || '';
+              // let label = data.datasets[tooltipItem.datasetIndex].label || '';
+              let label = data.labels[tooltipItem.index];
               let myData = data.datasets[0].data[tooltipItem.index] || '';
 
-              if (label) {
-                label += ': ';
-              }
+              // if (label) {
+              //   label += ': ';
+              // }
 
               myData += Math.round(tooltipItem.yLabel * 100) / 100;
-
-              // console.log(tooltipItem)
-              return label + myData + '%';
+              return `% of ${label}: ${myData} %`;
             }
           }
-        }
+        }, 
       }
     });
-
     this.setState({ chart: myChart });
   };
 
