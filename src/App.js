@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import Splash from './components/splash/splash';
 import PortfoliosList from './components/portfolios/portfolios_list';
 import Transactions from './components/manage/transactions';
 
@@ -8,10 +9,11 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <header>Robotic Investment Advisor</header>
+        <header>InvestorBot</header>
 
         <Switch>
-          <Route exact path="/" component={PortfoliosList} /> 
+          <Route exact path="/" component={Splash} />
+          <Route path="/portfolios" component={PortfoliosList} /> 
           <Route path="/manage/:id" component={Transactions} /> 
         </Switch>
       </div>
