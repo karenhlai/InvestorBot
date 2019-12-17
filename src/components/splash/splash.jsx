@@ -10,7 +10,8 @@ class Splash extends React.Component {
     return(
       <div className="splash-container">
         <h1>Easily achieve your financial goals.</h1>
-        <h2>Let us handle the work of rebalancing your funds.</h2>
+        <p>Select your Ideal Financial Distribution.</p>
+        <p>Let us handle the work of rebalancing your funds.</p>
 
         <Link to="/portfolios">Get Started ></Link>
       </div>

@@ -4,19 +4,38 @@ html {
   width: 100vw;
 }
 
-header {
-  position: absolute;
-  top: 15%;
-  left: 10%;
-  color: #fff;
-  font-size: 20px;
-  font-weight: bold;
-}
-
 h1, h2, h3, p {
   text-align: center;
   color: #fff;
   font-size: 18px;
+  line-height: 100%;
+}
+
+/* NAV */
+.nav-container {
+  width: 80%;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.nav-container > header {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.nav-container div:last-child {
+  justify-items: flex-end;
+}
+
+.nav-container > div > a:link, a:visited {
+  text-decoration: none;
+  font-size: 15px;
+  margin-left: 10px;
 }
 
 /* SPLASH */
@@ -35,22 +54,20 @@ h1, h2, h3, p {
 .splash-container a:link, a:visited {
   font-weight: bold;
   text-decoration: none;
-  background-color: #fff;
-  border: 1px solid #fff;
+  background-color: #555;
+  border: 1px solid #555;
   border-radius: 3%;
-  color: #68b7bd;
+  color: #fff;
   padding: 10px 20px;
   align-self: center;
   margin-top: 10px;
 }
-
 
 .portfolio-container {
   display: flex;
   flex-direction: column;
   align-content: center;
 }
-
 
 .portfolio-selector {
   align-self: center;
@@ -142,6 +159,3 @@ h1, h2, h3, p {
   padding: 3px 0px 3px 0px;
   border-bottom: 1px solid #d9dadc;
 }
-
-
-
