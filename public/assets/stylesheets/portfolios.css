@@ -67,6 +67,7 @@ h1, h2, h3, p {
   display: flex;
   flex-direction: column;
   align-content: center;
+  margin-top: 155px;
 }
 
 .portfolio-selector {
