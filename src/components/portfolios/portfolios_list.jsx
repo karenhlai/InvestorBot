@@ -156,14 +156,14 @@ class PortfoliosList extends React.Component {
         <h1>What is your desired financial portfolio?</h1>
 
         <div className="portfolio-selector">
-          <i className="fas fa-chevron-left" onClick={this.decrementNumber}></i>
-          <p>{this.state.number}</p>
-          <i className="fas fa-chevron-right" onClick={this.incrementNumber}></i>
+          <i class="fas fa-chevron-left" onClick={this.decrementNumber}></i>
+          <p>{ this.state.number }</p>
+          <i class="fas fa-chevron-right" onClick={this.incrementNumber}></i>
         </div>
 
         <p>(Ex. I would like to have 60% of my finances allotted to Bonds)</p>
 
-        {this.getPortfolio()}
+        { this.getPortfolio() }
 
         <div className="chart-size">
           <canvas id="myChart" width="400" height="400"></canvas>
