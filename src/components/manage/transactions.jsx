@@ -1,5 +1,6 @@
 import React from "react";
 import Chart from 'chart.js';
+import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
 import { TransactionsForm } from './transactions_form';
 
@@ -173,18 +174,20 @@ class Transactions extends React.Component {
 
   render() {
     const categories = ['Bonds', 'Stocks', 'Real_Estate', 'International_Stocks', 'Exotic_Motor_Cars'];
+    const returnButton = <Link to={'/'}>Return to Portfolios</Link>
     return (
-      <div>
+      <div className="transactions-container">
         <h1>Manage My Finances</h1>
+        {returnButton}
         <div className="chart-size">
-        <canvas id="myChart" width="400" height="400"></canvas>
+          <canvas id="myChart" width="400" height="400"></canvas>
         </div>
         <h3>Enter your funds to acheive the ideal portfolio:</h3>
-        <TransactionsForm 
+        <TransactionsForm
           categories={categories}
           handleFormSubmit={this.handleFormSubmit}
         />
- 
+
         <h3>Transactions to be made:</h3>
         <div id="calculate-transactions"></div>
       </div>
