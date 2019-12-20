@@ -1,73 +1,29 @@
 html {
-  background-color: #68b7bd;
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #fff;
+  font-family: "Courier New", Courier, monospace;
   width: 100vw;
 }
 
-h1, h2, h3, p {
+header {
   text-align: center;
-  color: #fff;
-  font-size: 18px;
-  line-height: 100%;
 }
 
-/* NAV */
-.nav-container {
-  width: 80%;
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  color: #fff;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+h1, h2, h3 {
+  text-align: center;
+  color: #555;
+  font-size: 20px;
 }
 
-.nav-container > header {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.nav-container div:last-child {
-  justify-items: flex-end;
-}
-
-.nav-container > div > a:link, a:visited {
-  text-decoration: none;
+p {
+  text-align: center;
   font-size: 15px;
-  margin-left: 10px;
 }
 
-/* SPLASH */
-.splash-container h1 {
-  font-size: 45px;
-}
-
-.splash-container {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-}
-
-.splash-container a:link, a:visited {
-  font-weight: bold;
-  text-decoration: none;
-  background-color: #555;
-  border: 1px solid #555;
-  border-radius: 3%;
-  color: #fff;
-  padding: 10px 20px;
-  align-self: center;
-  margin-top: 10px;
-}
 
 .portfolio-container {
   display: flex;
   flex-direction: column;
   align-content: center;
-  margin-top: 155px;
 }
 
 .portfolio-selector {
@@ -112,6 +68,10 @@ h1, h2, h3, p {
   font-weight: bold;
 }
 
+.transactions-container {
+  text-align: center;
+}
+
 .form-container {
   margin-top: 20px;
   padding: 10px;
@@ -140,12 +100,9 @@ h1, h2, h3, p {
 
 .form-input {
   width: 100%;
-  margin-top: 10px;
+  margin-top: 10px !important;
 }
 
-/* .form-input :first-child {
-  background: red;
-} */
 
 
 #calculate-transactions {
@@ -160,3 +117,6 @@ h1, h2, h3, p {
   padding: 3px 0px 3px 0px;
   border-bottom: 1px solid #d9dadc;
 }
+
+
+
