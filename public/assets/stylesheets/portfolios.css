@@ -8,17 +8,15 @@ header {
   text-align: center;
 }
 
-h1, h2, h3 {
+h1, h2, h3, p {
   text-align: center;
   color: #555;
   font-size: 20px;
 }
 
 p {
-  text-align: center;
   font-size: 15px;
 }
-
 
 .portfolio-container {
   display: flex;
@@ -30,7 +28,7 @@ p {
   align-self: center;
 }
 
-.portfolio-selector p {
+.portfolio-selector > p {
   font-size: 70px;
   font-weight: bold;
   display: contents;
@@ -102,8 +100,6 @@ p {
   width: 100%;
   margin-top: 10px !important;
 }
-
-
 
 #calculate-transactions {
   min-height: 200px;
