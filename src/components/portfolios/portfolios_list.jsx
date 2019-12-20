@@ -149,6 +149,8 @@ class PortfoliosList extends React.Component {
   }
 
   render() {
+    
+
     return (
       <div className="portfolio-container">
         <h1>What is your risk temperament?</h1>
