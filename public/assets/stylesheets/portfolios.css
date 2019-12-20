@@ -11,7 +11,7 @@ header {
 h1, h2, h3, p {
   text-align: center;
   color: #555;
-  font-size: 20px;
+  /* font-size: 20px; */
 }
 
 p {
@@ -22,17 +22,12 @@ p {
   display: flex;
   flex-direction: column;
   align-content: center;
+  text-align: center;
 }
 
-.portfolio-selector {
+/* .portfolio-selector {
   align-self: center;
-}
-
-.portfolio-selector > p {
-  font-size: 70px;
-  font-weight: bold;
-  display: contents;
-}
+} */
 
 .portfolio-selector i {
   font-size: 25px;
@@ -42,24 +37,31 @@ p {
   padding: 10px;
 }
 
-.portfolio-profile-container {
+.portfolio-selector p {
+  font-size: 70px;
+  font-weight: bold;
+  display: contents;
+}
+
+
+.portfolio-table-container {
   width: 55%;
   align-self: center;
   align-content: center;
 }
 
-.portfolio-profile {
+.portfolio-table {
   border: 1px solid #00a2e2;
 }
 
-.portfolio-profile h3 {
+.portfolio-table h3 {
   background-color: #00a2e2;
   color: white;
   padding: 10px;
   margin-top: 0;
 }
 
-.portfolio-profile-container a {
+.portfolio-table-container a {
   padding: 10px 0px 10px 0px;
   display: flex; 
   justify-content: center;

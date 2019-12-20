@@ -67,8 +67,8 @@ class PortfoliosList extends React.Component {
       default: 
         const myPortfolioUrl = `/manage/${portfolioId}`;
         return (
-          <div className="portfolio-profile-container">
-            <div className="portfolio-profile">
+          <div className="portfolio-table-container">
+            <div className="portfolio-table">
               <h3>{this.state.displayPortfolio.portfolio_category}</h3>
               <p>{this.state.displayPortfolio.portfolio_description}</p>
             </div>
@@ -159,10 +159,8 @@ class PortfoliosList extends React.Component {
           <i className="fas fa-chevron-right" onClick={this.incrementNumber}></i>
         </div>
 
-        {/* <p>(Select a portfolio based on your risk temperament)</p> */}
         <p>(Ex. I would like to have 60% of my finances allotted to Bonds)</p>
 
-        {/* portfolio profile */}
         {this.getPortfolio()}
 
         <div className="chart-size">
