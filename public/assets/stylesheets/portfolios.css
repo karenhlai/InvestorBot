@@ -1,75 +1,84 @@
-html {
-  background-color: #fff;
-  font-family: "Courier New", Courier, monospace;
-  width: 100vw;
-}
-
-header {
-  text-align: center;
-}
-
-h1, h2, h3, p {
-  text-align: center;
-  color: #555;
-}
-
-p {
-  font-size: 15px;
-}
-
-a {
-  font-weight: bold;
-}
-
 .portfolio-container {
+  margin: 5% 10%;
+  background: hsla(0, 0%, 70%, .5);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-radius: 5px;
+  text-align: center;
+  color: #E0EAEE;
+  padding: 50px 5px;
+}
+
+.portfolio-right {
   display: flex;
   flex-direction: column;
-  text-align: center;
+  justify-content: flex-start;
+  /* padding-right: 50px; */
+}
+
+.portfolio-right > p {
+  font-size: 16px;
+  font-style: italic;
 }
 
 .portfolio-selector i {
-  font-size: 25px;
-  color: #555;
+  font-size: 20px;
+  color: #E0EAEE;
+  /* background-color: #555; */
+  /* border-radius: 5px; */
   position: relative;
   top: -10px;
   padding: 10px;
+  /* padding: 5px 6px; */
 }
 
 .portfolio-selector p {
-  font-size: 70px;
+  font-size: 50px;
   font-weight: bold;
   display: contents;
+  color: #E0EAEE;
+  padding: 3px;
 }
 
 .portfolio-table-container {
-  width: 55%;
+  width: 80%;
   align-self: center;
   align-content: center;
 }
 
+.portfolio-table-container a {
+  font-size: 18px;
+  text-decoration: none;
+  color: #b8ecff;
+  display: inline-block;
+  padding-top: 65px;
+}
+
 .portfolio-table {
-  border: 1px solid #00a2e2;
+  border: 1px solid #63A3BD;
+  border-radius: 7px;
 }
 
 .portfolio-table h3 {
-  background-color: #00a2e2;
-  color: white;
+  background-color: #63A3BD;
+  color: #fff;
   padding: 10px;
   margin-top: 0;
 }
 
-.portfolio-table-container a {
-  padding: 10px 0px 10px 0px;
-  display: flex; 
-  justify-content: center;
-}
-
 .transactions-container {
+  margin: 5% 10%;
+  padding: 50px 5px;
+  background: hsla(0, 0%, 70%, .5);
+  border-radius: 5px;
   text-align: center;
+  color: #E0EAEE;
 }
 
 .form-container {
-  margin-top: 20px;
+  /* margin-top: 20px; */
+  margin: 20px 10%;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -77,20 +86,23 @@ a {
 }
 
 .form-container input:last-child {
-  display: block;
+  /* display: block; */
   margin: 10px auto 0 auto;
-  background-color: #00a2e2;
-  padding: 15px 58px 15px 58px;
+  background-color: #63A3BD;
+  padding: 15px 58px;
+  border: 1px solid #63A3BD;
   border-radius: 5px;
-  font-family: "Courier New", Courier, monospace;
   font-size: 17px;
   font-weight: bold;
-  color: #fff;
+  color: #E0EAEE;
 }
 
 .chart-size {
   width: 400px;
   height: 400px;
+}
+
+#my-chart-size {
   margin: 0 auto;
 }
 
@@ -100,6 +112,7 @@ a {
 }
 
 #calculate-transactions {
+  margin: 0px 10%;
   min-height: 200px;
   padding: 18px;
   border: 1px double #d9dadc;

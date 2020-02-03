@@ -1,30 +1,30 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 class Nav extends React.Component {
   constructor() {
     super();
     
-    this.state = {
-      isOpen: true
-    }
+    // this.state = {
+    //   isOpen: true
+    // }
 
-    this.toggle = this.toggle.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    // this.toggle = this.toggle.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
   }
 
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    }, () => console.log(this.state))
-  };
+  // toggle() {
+  //   this.setState({
+  //     isOpen: !this.state.isOpen
+  //   }, () => console.log(this.state))
+  // };
 
-  handleClick(e) {
-    e.preventDefault();
-    this.setState({
-      bgColor: 'red'
-    })
-  }
+  // handleClick(e) {
+  //   e.preventDefault();
+  //   this.setState({
+  //     bgColor: 'red'
+  //   })
+  // }
   
   render() {
     return (
@@ -34,8 +34,8 @@ class Nav extends React.Component {
         </header>
 
         <div className="right-nav">
-          <Link to="/" onClick={this.toggle}>ABOUT</Link>
-          <Link to="/portfolios">PORTFOLIOS</Link>
+          <NavLink exact to="/">ABOUT</NavLink>
+          <NavLink exact to="/portfolios">PORTFOLIOS</NavLink>
         </div>
       </div>
     )

@@ -54,9 +54,16 @@ class Transactions extends React.Component {
         },
         title: {
           display: true,
-          text: 'Your Ideal Portfolio', 
-          fontSize: 15,
-        }, 
+          text: 'Ideal Portfolio',
+          fontSize: 18,
+          fontColor: '#E0EAEE'
+        },
+        legend: {
+          labels: {
+            fontColor: '#E0EAEE',
+            fontSize: 16
+          }
+        },
         tooltips: {
           callbacks: {
             label: function (tooltipItem, data) {
@@ -174,12 +181,12 @@ class Transactions extends React.Component {
 
   render() {
     const categories = ['Bonds', 'Stocks', 'Real_Estate', 'International_Stocks', 'Exotic_Motor_Cars'];
-    const returnButton = <Link to={'/'}>Return to Portfolios</Link>
+    const returnButton = <Link to={'/portfolios'}>Return to Portfolios </Link>
     return (
       <div className="transactions-container">
-        <h1>Manage My Finances</h1>
         {returnButton}
-        <div className="chart-size">
+        <h1>Manage My Finances</h1>
+        <div className="chart-size" id="my-chart-size">
           <canvas id="myChart" width="400" height="400"></canvas>
         </div>
         <h3>Enter your funds to acheive the ideal portfolio:</h3>

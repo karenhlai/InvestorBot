@@ -72,7 +72,7 @@ class PortfoliosList extends React.Component {
               <h3>{this.state.displayPortfolio.portfolio_category}</h3>
               <p>{this.state.displayPortfolio.portfolio_description}</p>
             </div>
-            <Link to={myPortfolioUrl}>Manage my Portfolio</Link>
+            <Link to={myPortfolioUrl}>Manage my Portfolio >></Link>
           </div>
         )
     }
@@ -90,12 +90,12 @@ class PortfoliosList extends React.Component {
           label: '% of financial distribution',
           data: this.state.displayPortfolio.financial_distribution, 
           backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
+            'rgba(255, 99, 132, 0.5)',
+            'rgba(54, 162, 235, 0.5)',
+            'rgba(255, 206, 86, 0.5)',
+            'rgba(75, 192, 192, 0.5)',
+            'rgba(153, 102, 255, 0.5)',
+            'rgba(255, 159, 64, 0.5)'
           ],
           borderColor: [
             'rgba(255, 99, 132, 1)',
@@ -105,7 +105,7 @@ class PortfoliosList extends React.Component {
             'rgba(153, 102, 255, 1)',
             'rgba(255, 159, 64, 1)'
           ],
-          borderWidth: 1
+          borderWidth: 2
         }]
       },
       options: {
@@ -115,7 +115,14 @@ class PortfoliosList extends React.Component {
         title: {
           display: true,
           text: 'Ideal Portfolio',
-          fontSize: 15,
+          fontSize: 18,
+          fontColor: '#E0EAEE'
+        },
+        legend: {
+          labels: {
+            fontColor: '#E0EAEE', 
+            fontSize: 16
+          }
         },
         tooltips: {
           callbacks: {
@@ -131,6 +138,7 @@ class PortfoliosList extends React.Component {
               myData += Math.round(tooltipItem.yLabel * 100) / 100;
               return `% of ${label}: ${myData} %`;
             }
+            
           }
         }, 
       }
@@ -153,20 +161,23 @@ class PortfoliosList extends React.Component {
 
     return (
       <div className="portfolio-container">
-        <h1>What is your desired financial portfolio?</h1>
-
-        <div className="portfolio-selector">
-          <i class="fas fa-chevron-left" onClick={this.decrementNumber}></i>
-          <p>{ this.state.number }</p>
-          <i class="fas fa-chevron-right" onClick={this.incrementNumber}></i>
-        </div>
-
-        <p>(Ex. I would like to have 60% of my finances allotted to Bonds)</p>
-
-        { this.getPortfolio() }
-
         <div className="chart-size">
           <canvas id="myChart" width="400" height="400"></canvas>
+        </div>
+
+        <div className="portfolio-right">
+          <h2>What is your desired financial portfolio?</h2>
+
+          <div className="portfolio-selector">
+            <i class="fas fa-chevron-left" onClick={this.decrementNumber}></i>
+            <p>{ this.state.number }</p>
+            <i class="fas fa-chevron-right" onClick={this.incrementNumber}></i>
+          </div>
+
+          <p>(Ex. I would like to have 60% of my finances allotted to Bonds)</p>
+
+          { this.getPortfolio() }
+
         </div>
       </div>
     )
