@@ -161,7 +161,7 @@ class PortfoliosList extends React.Component {
 
     return (
       <div className="portfolio-container">
-        <div className="chart-size">
+        <div className="chart-size portfolio-left">
           <canvas id="myChart" width="400" height="400"></canvas>
         </div>
 

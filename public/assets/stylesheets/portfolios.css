@@ -1,6 +1,6 @@
 .portfolio-container {
-  margin: 5% 10%;
   background: hsla(0, 0%, 70%, .3);
+  margin: 0 10%;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -14,7 +14,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  /* padding-right: 50px; */
+  /* padding-left: 50px; */
 }
 
 .portfolio-right > p {
@@ -68,8 +68,8 @@
 }
 
 .transactions-container {
-  margin: 5% 10%;
-  padding: 50px 5px;
+  margin: 0 10%;
+  padding: 50px 0;
   background: hsla(0, 0%, 70%, .3);
   border-radius: 5px;
   text-align: center;
@@ -86,7 +86,6 @@
 }
 
 .form-container input:last-child {
-  /* display: block; */
   margin: 10px auto 0 auto;
   background-color: #63A3BD;
   padding: 15px 58px;
