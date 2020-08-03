@@ -6,12 +6,14 @@
 InvestorBot is a robotic investment advisor that was built with React.js / Redux. This frontend application attempts to help its users achieve their ideal financial portfolio by rebalancing their funds. This application was built in a 9 hour time frame, potential features may be added in the future.
 
 <h3>Implementation Technologies and Methods</h3>
+
 - Frontend: React.js, Redux, Javascript
 - External Resources: Chart.js (built with D3)
 
 - Buiding an initial state shape for 10 range of portfolios
 
 <h2>To run this project</h2>
+
 - (navigte to desktop in your terminal)
 - git clone https://github.com/karenhlai/InvestorBot
 - npm run start 
