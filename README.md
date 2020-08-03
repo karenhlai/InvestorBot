@@ -27,7 +27,7 @@ InvestorBot is a robotic investment advisor that was built with React.js / Redux
 
 
 <h2>Code Highlights</h2>
-<h2>Removing and repopulating data into Chart.js</h2>
+<h3>Removing and repopulating data into Chart.js</h3>
 
 ```javascript
 src/components/portfolios/portfolios_list.jsx
@@ -44,8 +44,9 @@ addData = (chart, data) => {
 ```
 Getting the chart to display the selected portfolio proved to be an intial challange. While the chart library provided a method to accept incoming values to render a chart, it did not listen for changes in percentages when a user navigated between different portfolios. Hence, I defined removeData and addData on top of the given methods to select the data object, and reassign its value to the new portfolio selected. 
 
-![investor_bot_gif](public/assets/images/investor_bot_gif.gif)
+<h3>UI/UX: </h3>
 
-UI/UX: 
+![investor_bot_gif](public/assets/images/investor_bot_gif.gif)
 - Implemented dynamic donut charts from Chart.js 
 
+![investor_bot_gif](public/assets/images/investor_bot_part2.gif)
