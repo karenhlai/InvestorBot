@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 // import { fetchPortfolios } from "../../actions/portfolio_actions";
 import { increment, decrement } from "../../actions/portfolio_actions";
 import Chart from 'chart.js';
-// import DonutChart from './chart'
 
 class PortfoliosList extends React.Component {
   constructor(props) {
@@ -165,7 +164,7 @@ class PortfoliosList extends React.Component {
         <div className="chart-size portfolio-left">
           <canvas id="myChart" width="400" height="400"></canvas>
         </div>
-        {/* {DonutChart} */}
+
         <div className="portfolio-right">
           <h2>What is your desired financial portfolio?</h2>
 
@@ -189,6 +188,7 @@ class PortfoliosList extends React.Component {
 const mapStateToProps = state => {
   const portfolios = state.portfolios;
   const counter = state.counter;
+  debugger
   return ({
     portfolios,
     counter, 
