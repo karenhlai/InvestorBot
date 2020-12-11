@@ -1,13 +1,8 @@
 import React, {useState, useEffect, useRef} from 'react';
 import Chart from 'chart.js';
 
-// props : counter, all portfolios
-const DonutChart = (props) => {
-  // const initialStatePortfolio = {
-  //   number: props.counter, 
-  //   displayPortfolio: props.portfolios[props.counter - 1], 
-  // };
-
+const DonutChart = ({ portfolio }) => {
+  console.log(portfolio)
   const chartContainer = useRef(null);
   const [chart, setChart] = useState(null);
 
@@ -19,7 +14,7 @@ const DonutChart = (props) => {
           labels: ['Bonds', 'Stocks', 'Real Estate', 'International Stocks', 'Exotic Motor Cars'],
           datasets: [{
             label: '% of financial distribution',
-            data: this.state.displayPortfolio.financial_distribution, 
+            data: portfolio.financial_distribution, 
             backgroundColor: [
               'rgba(255, 99, 132, 0.5)',
               'rgba(54, 162, 235, 0.5)',
@@ -58,23 +53,17 @@ const DonutChart = (props) => {
           tooltips: {
             callbacks: {
               label: function (tooltipItem, data) {
-                // let label = data.datasets[tooltipItem.datasetIndex].label || '';
                 let label = data.labels[tooltipItem.index];
                 let myData = data.datasets[0].data[tooltipItem.index] || '';
-
-                // if (label) {
-                //   label += ': ';
-                // }
-
                 myData += Math.round(tooltipItem.yLabel * 100) / 100;
                 return `% of ${label}: ${myData} %`;
               }
-              
             }
           }, 
         }
       });
       setChart(newChartInstance);
+      
     }
   }, [chartContainer]);
 
@@ -85,15 +74,12 @@ const DonutChart = (props) => {
     
   return (
     <div className="chart-size portfolio-left">
-      New Chart
       <canvas ref={chartContainer} id="myChart" width="400" height="400"></canvas>
     </div>
   )
 }
 
-//create chart
-// addData
-// removeData
-
-
 export default DonutChart;
+
+// call .update() somewhere
+// fix counter

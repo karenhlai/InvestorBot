@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import { connect, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { increment, decrement } from '../../actions/portfolio_actions';
-import Chart from 'chart.js';
+import DonutChart from './chart';
 
 const PortfolioIndex = () => {
   //mapStateToProps
-  const counter = useSelector(state => state.counter);
+  const counter = useSelector(state => state.counter); //start @ 1
   const portfolios = useSelector(state => state.portfolios);
 
   // mapDispatchToProps: counter, portfolios
@@ -22,9 +22,6 @@ const PortfolioIndex = () => {
       setPortfolio(portfolios[count - 1]); //decs based on idx
       dispatch(decrement());
     };
-    
-    //update dataset passes props into chart component
-    
   }
 
   const incrementNumber = () => {
@@ -33,11 +30,11 @@ const PortfolioIndex = () => {
       setPortfolio(portfolios[count + 1]);
       dispatch(increment());
     };
-
   }
 
   return (
     <div className="portfolio-container">
+      <DonutChart portfolio={portfolio} />
 
       <div className="portfolio-right">
         <h2>What is your desired financial portfolio?</h2>
@@ -50,12 +47,16 @@ const PortfolioIndex = () => {
 
         <p>(Ex. I would like to have 60% of my finances allotted to Bonds)</p>
 
-        {/* { portfolio }  */}
-
+        <div className="portfolio-table-container">
+          <div className="portfolio-table">
+            <h3>{ portfolio.portfolio_category }</h3>
+            <p>{ portfolio.portfolio_description }</p>
+          </div>
+          <Link to={`/manage/${count - 1}`}>Manage my Portfolio</Link>
+        </div>
       </div>
     </div>
   )
 };
 
 export default PortfolioIndex;
-// number is the counter
