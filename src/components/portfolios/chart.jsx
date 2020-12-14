@@ -2,12 +2,11 @@ import React, {useState, useEffect, useRef} from 'react';
 import Chart from 'chart.js';
 
 const DonutChart = ({ portfolio }) => {
-  console.log(portfolio)
   const chartContainer = useRef(null);
   const [chart, setChart] = useState(null);
 
   useEffect(() => {
-    if (chartContainer && chartContainer.current) {
+    function instantiateChart() {
       const newChartInstance = new Chart(chartContainer.current, {
         type: 'doughnut',
         data: {
@@ -63,15 +62,22 @@ const DonutChart = ({ portfolio }) => {
         }
       });
       setChart(newChartInstance);
-      
-    }
-  }, [chartContainer]);
+    };
 
-  const updateData = (count, data) => {
-    chart.config.data.datasets[0].data = data;
-    chart.update();
-  }
-    
+    function updateDataset(chart, data) {
+      chart.config.data.datasets[0].data = data;
+      chart.update();
+    };
+
+    if (!chart) {
+      console.log("!chart")
+      instantiateChart();
+    } else {
+      console.log("chart");
+      updateDataset(chart, portfolio.financial_distribution);
+    }
+  }, [portfolio.id]);
+
   return (
     <div className="chart-size portfolio-left">
       <canvas ref={chartContainer} id="myChart" width="400" height="400"></canvas>
@@ -80,6 +86,3 @@ const DonutChart = ({ portfolio }) => {
 }
 
 export default DonutChart;
-
-// call .update() somewhere
-// fix counter

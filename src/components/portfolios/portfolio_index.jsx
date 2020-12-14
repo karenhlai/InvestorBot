@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { increment, decrement } from '../../actions/portfolio_actions';
@@ -6,7 +6,7 @@ import DonutChart from './chart';
 
 const PortfolioIndex = () => {
   //mapStateToProps
-  const counter = useSelector(state => state.counter); //start @ 1
+  const counter = useSelector(state => state.counter); //start @ 1, needed for nav persist
   const portfolios = useSelector(state => state.portfolios);
 
   // mapDispatchToProps: counter, portfolios
@@ -40,9 +40,9 @@ const PortfolioIndex = () => {
         <h2>What is your desired financial portfolio?</h2>
 
         <div className="portfolio-selector">
-          <i class="fas fa-chevron-left" onClick={decrementNumber}></i>
+          <i className="fas fa-chevron-left" onClick={decrementNumber}></i>
           <p>{ counter }</p>
-          <i class="fas fa-chevron-right" onClick={incrementNumber}></i>
+          <i className="fas fa-chevron-right" onClick={incrementNumber}></i>
         </div>
 
         <p>(Ex. I would like to have 60% of my finances allotted to Bonds)</p>
