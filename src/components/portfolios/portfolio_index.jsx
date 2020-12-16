@@ -15,8 +15,6 @@ const PortfolioIndex = () => {
   // useState hooks
   const [portfolio, setPortfolio] = useState(portfolios[counter]);
   const [count, setCount] = useState(counter);
-  console.log(portfolio)
-  console.log(count)
   
   const decrementNumber = () => {
     if (count > 0) {

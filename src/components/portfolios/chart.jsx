@@ -70,10 +70,8 @@ const DonutChart = ({ portfolio }) => {
     };
 
     if (!chart) {
-      console.log("!chart")
       instantiateChart();
     } else {
-      console.log("chart");
       updateDataset(chart, portfolio.financial_distribution);
     }
   }, [portfolio.id]);
