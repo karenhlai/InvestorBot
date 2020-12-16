@@ -20,4 +20,4 @@ export const TransactionsForm = ({ categories, handleFormSubmit }) => (
     }
     <input type="submit" value="Rebalance"></input>
   </form>
-);
+); 

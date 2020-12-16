@@ -85,4 +85,4 @@ const DonutChart = ({ portfolio }) => {
   )
 }
 
-export default DonutChart;
+export default DonutChart; 

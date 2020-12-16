@@ -6,26 +6,28 @@ import DonutChart from './chart';
 
 const PortfolioIndex = () => {
   //mapStateToProps
-  const counter = useSelector(state => state.counter); //start @ 1, needed for nav persist
+  const counter = useSelector(state => state.counter); //needed for nav persist
   const portfolios = useSelector(state => state.portfolios);
-
+  
   // mapDispatchToProps: counter, portfolios
   const dispatch = useDispatch();
-
+  
   // useState hooks
-  const [portfolio, setPortfolio] = useState(portfolios[counter - 1]);
+  const [portfolio, setPortfolio] = useState(portfolios[counter]);
   const [count, setCount] = useState(counter);
+  console.log(portfolio)
+  console.log(count)
   
   const decrementNumber = () => {
-    if (count > 1) {
+    if (count > 0) {
       setCount(count - 1);
-      setPortfolio(portfolios[count - 1]); //decs based on idx
+      setPortfolio(portfolios[count - 1]); 
       dispatch(decrement());
     };
   }
 
   const incrementNumber = () => {
-    if (count < 10) {
+    if (count < 9) {
       setCount(count + 1);
       setPortfolio(portfolios[count + 1]);
       dispatch(increment());
@@ -41,7 +43,7 @@ const PortfolioIndex = () => {
 
         <div className="portfolio-selector">
           <i className="fas fa-chevron-left" onClick={decrementNumber}></i>
-          <p>{ counter }</p>
+          <p>{ count + 1 }</p> 
           <i className="fas fa-chevron-right" onClick={incrementNumber}></i>
         </div>
 

@@ -1,7 +1,7 @@
 // import merge from 'lodash/merge';
 import { INCREMENT, DECREMENT } from '../actions/portfolio_actions';
 
-export default (state = 1, action) => {
+export default (state = 0, action) => {
   Object.freeze(state);
   // let nextState = merge({}, state);
   // debugger
