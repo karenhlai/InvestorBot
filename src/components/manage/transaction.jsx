@@ -1,13 +1,16 @@
 import React, {useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Chart from 'chart.js';
-
+import { TransactionsForm } from './transactions_form';
 
 const Transaction = (props) => {
   // mapStateToProps
   // Was previously using React-Redux Router to get portfolioId from ownProps
   const portfolio = useSelector(state => state.portfolios[props.match.params.id]);
+  
+  // IDEA/TODO: remove when new feature allows user to create/select their own categories
+  const categories = ['Bonds', 'Stocks', 'Real_Estate', 'International_Stocks', 'Exotic_Motor_Cars'];
 
   useEffect(() => {
     function instantiateStaticChart() {
@@ -15,7 +18,7 @@ const Transaction = (props) => {
       const myChart = new Chart(ctx, {
       type: 'doughnut',
       data: {
-        labels: ['Bonds', 'Stocks', 'Real Estate', 'International Stocks', 'Exotic Motor Cars'],
+        labels: categories,
         datasets: [{
           label: '% of financial distribution',
           data: portfolio.financial_distribution,
@@ -81,6 +84,10 @@ const Transaction = (props) => {
       </div>
 
       <h3>Enter your funds to acheive the ideal portfolio:</h3>
+      <TransactionsForm
+        categories={categories}
+        // handleFormSubmit={this.handleFormSubmit}
+      />
     </div>
   )
 }
