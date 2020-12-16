@@ -52,7 +52,7 @@ const PortfolioIndex = () => {
             <h3>{ portfolio.portfolio_category }</h3>
             <p>{ portfolio.portfolio_description }</p>
           </div>
-          <Link to={`/manage/${count - 1}`}>Manage my Portfolio</Link>
+          <Link to={`/manage/${count}`}>Manage my Portfolio</Link>
         </div>
       </div>
     </div>

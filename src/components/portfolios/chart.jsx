@@ -6,7 +6,7 @@ const DonutChart = ({ portfolio }) => {
   const [chart, setChart] = useState(null);
 
   useEffect(() => {
-    function instantiateChart() {
+    function instantiateDynamicChart() {
       const newChartInstance = new Chart(chartContainer.current, {
         type: 'doughnut',
         data: {
@@ -70,7 +70,7 @@ const DonutChart = ({ portfolio }) => {
     };
 
     if (!chart) {
-      instantiateChart();
+      instantiateDynamicChart();
     } else {
       updateDataset(chart, portfolio.financial_distribution);
     }

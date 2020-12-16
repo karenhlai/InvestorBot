@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Nav from './components/nav/nav';
 import Splash from './components/splash/splash';
 import Transactions from './components/manage/transactions';
+import Transaction from './components/manage/transaction';
 import PortfolioIndex from './components/portfolios/portfolio_index';
 
 class App extends React.Component {
@@ -15,7 +16,8 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Splash} />
           <Route exact path="/portfolios" component={PortfolioIndex} /> 
-          <Route path="/manage/:id" component={Transactions} /> 
+          {/* <Route path="/manage/:id" component={Transactions} />  */}
+          <Route path="/manage/:id" component={Transaction} /> 
         </Switch>
       </div>
     )

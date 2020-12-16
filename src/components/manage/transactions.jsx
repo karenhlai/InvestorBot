@@ -6,6 +6,7 @@ import { TransactionsForm } from './transactions_form';
 
 class Transactions extends React.Component {
   constructor(props) {
+    console.log(props)
     super(props)
     this.state = {
       "Bonds": null, 
@@ -206,7 +207,7 @@ class Transactions extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   const portfolioId = Number(ownProps.match.params.id);
   const portfolio = state.portfolios[portfolioId];
-  // debugger
+  debugger
   return ({
     portfolioId, 
     portfolio
