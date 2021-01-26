@@ -23,13 +23,13 @@ export const TransactionForm = () => {
       { Object.keys(inputs).map((category, id) => {
         return (
           <TextField
+          onChange={handleInputChange}
           className="form-input"
           type="number"
           key={id}
           label={category}
           name={category}
           variant="outlined"
-          onChange={handleInputChange}
           />
           );
         })

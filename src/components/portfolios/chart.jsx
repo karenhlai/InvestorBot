@@ -62,19 +62,19 @@ const DonutChart = ({ portfolio }) => {
         }
       });
       setChart(newChartInstance);
-    };
+    }
 
     function updateDataset(chart, data) {
       chart.config.data.datasets[0].data = data;
       chart.update();
-    };
+    }
 
     if (!chart) {
       instantiateDynamicChart();
     } else {
       updateDataset(chart, portfolio.financial_distribution);
     }
-  }, [portfolio.id]);
+  }, [portfolio.id])
 
   return (
     <div className="chart-size portfolio-left">
