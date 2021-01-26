@@ -12,7 +12,8 @@ export const TransactionForm = () => {
     };
 
   const rebalanceCallback = () => {
-    console.log("Youve hit the reblance callback")
+    console.log("Youve hit the reblance callback");
+    
   }
 
   // destructure obj that is returned to us by hook
