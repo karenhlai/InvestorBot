@@ -1,17 +1,18 @@
+import { initial } from 'lodash';
 import React, { useState } from 'react';
 
-export const useTransactionForm = (initialInputState, callback) => {
+export const useTransactionForm = (initialInputState, rebalanceCallback) => {
   // init state var, set inital var 
   const [inputs, setInputs] = useState(initialInputState);
 
   // handle onChanges inputs
+  // it should: 
   const handleInputChange = (e) => {
     e.persist();
     setInputs(inputs => ({
       ...inputs, 
       [e.target.name]: e.target.value
     }));
-    console.log(inputs)
   };
 
   // define handleSubmit
@@ -19,6 +20,8 @@ export const useTransactionForm = (initialInputState, callback) => {
   const handleSubmit = (e) => {
     if (e) e.preventDefault();
     // write rebalance callback here
+    console.log(inputs)
+    rebalanceCallback();
   };
 
   return { 

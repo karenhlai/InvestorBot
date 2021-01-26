@@ -6,14 +6,12 @@ import { TransactionForm } from './transaction_form';
 import { useTransactionForm } from '../../CustomHooks';
 
 const Transaction = (props) => {
-  // mapStateToProps
+  // mapStateToProps 
   // Was previously using React-Redux Router to get portfolioId from ownProps
   const portfolio = useSelector(state => state.portfolios[props.match.params.id]);
   
   // IDEA/TODO: remove when new feature allows user to create/select their own categories
   const categories = ['Bonds', 'Stocks', 'Real_Estate', 'International_Stocks', 'Exotic_Motor_Cars'];
-
-  // const { inputs, handleInputChange, handleSubmit } = useTransactionForm(null);
 
   useEffect(() => {
     function instantiateStaticChart() {
@@ -74,16 +72,8 @@ const Transaction = (props) => {
       }
     });
   };
-
   instantiateStaticChart();
   }, [portfolio.id]);
-  
-  const handleSubmit = () => {
-    // clear old submissions
-    // document.getElementById("calculate-transactions").innerHTML = ""; 
-
-    console.log("Form submitted");
-  }
   
   return (
     <div className="transactions-container">
@@ -96,7 +86,6 @@ const Transaction = (props) => {
       <h3>Enter your funds to acheive the ideal portfolio:</h3>
       <TransactionForm
         categories={categories}
-        onSubmit={handleSubmit}
       />
 
       <h3>Transactions to be made:</h3>
