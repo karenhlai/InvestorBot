@@ -17,10 +17,10 @@ export const TransactionForm = () => {
 
   // destructure obj that is returned to us by hook
   const {inputs, handleInputChange, handleSubmit} = useTransactionForm(initialInputState, rebalanceCallback);
-
+  
   return (
     <form className="form-container" onSubmit={handleSubmit}>
-      { inputs.map((category, id) => {
+      { Object.keys(inputs).map((category, id) => {
         return (
           <TextField
           className="form-input"

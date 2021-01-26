@@ -84,9 +84,7 @@ const Transaction = (props) => {
       </div>
 
       <h3>Enter your funds to acheive the ideal portfolio:</h3>
-      <TransactionForm
-        categories={categories}
-      />
+      <TransactionForm />
 
       <h3>Transactions to be made:</h3>
         <div id="calculate-transactions"></div>
