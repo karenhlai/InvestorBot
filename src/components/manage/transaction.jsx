@@ -2,7 +2,8 @@ import React, {useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Chart from 'chart.js';
-import { TransactionsForm } from './transactions_form';
+import { TransactionForm } from './transaction_form';
+import { useTransactionForm } from '../../CustomHooks';
 
 const Transaction = (props) => {
   // mapStateToProps
@@ -11,6 +12,8 @@ const Transaction = (props) => {
   
   // IDEA/TODO: remove when new feature allows user to create/select their own categories
   const categories = ['Bonds', 'Stocks', 'Real_Estate', 'International_Stocks', 'Exotic_Motor_Cars'];
+
+  // const { inputs, handleInputChange, handleSubmit } = useTransactionForm(null);
 
   useEffect(() => {
     function instantiateStaticChart() {
@@ -75,6 +78,13 @@ const Transaction = (props) => {
   instantiateStaticChart();
   }, [portfolio.id]);
   
+  const handleSubmit = () => {
+    // clear old submissions
+    // document.getElementById("calculate-transactions").innerHTML = ""; 
+
+    console.log("Form submitted");
+  }
+  
   return (
     <div className="transactions-container">
       <Link to={'/portfolios'}>Return to Portfolios </Link>
@@ -84,10 +94,13 @@ const Transaction = (props) => {
       </div>
 
       <h3>Enter your funds to acheive the ideal portfolio:</h3>
-      <TransactionsForm
+      <TransactionForm
         categories={categories}
-        // handleFormSubmit={this.handleFormSubmit}
+        onSubmit={handleSubmit}
       />
+
+      <h3>Transactions to be made:</h3>
+        <div id="calculate-transactions"></div>
     </div>
   )
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
 
-export const TransactionsForm = ({ categories, handleFormSubmit }) => (
-  <form className="form-container" onSubmit={handleFormSubmit}>
+export const TransactionForm = ({ categories, onSubmit }) => (
+  <form className="form-container" onSubmit={onSubmit}>
     { categories.map((category, id) => {
       return (
         // <ThemeProvider>

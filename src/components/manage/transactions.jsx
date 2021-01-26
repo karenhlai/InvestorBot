@@ -2,7 +2,7 @@ import React from "react";
 import Chart from 'chart.js';
 import { Link } from 'react-router-dom';
 import { connect } from "react-redux";
-import { TransactionsForm } from './transactions_form';
+import { TransactionForm } from './transaction_form';
 
 class Transactions extends React.Component {
   constructor(props) {
@@ -191,7 +191,7 @@ class Transactions extends React.Component {
           <canvas id="myChart" width="400" height="400"></canvas>
         </div>
         <h3>Enter your funds to acheive the ideal portfolio:</h3>
-        <TransactionsForm
+        <TransactionForm
           categories={categories}
           handleFormSubmit={this.handleFormSubmit}
         />
