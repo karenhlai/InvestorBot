@@ -3,13 +3,13 @@ const portfolios = [
     "id": 0, 
     "portfolio_category": "Risk Adverse",
     "portfolio_description": "Unwilling to take risks",
-    "financial_distribution": [30, 20, 45, 5, 5]
+    "financial_distribution": [30, 20, 45, 5, 0]
   },
   {
     "id": 1, 
     "portfolio_category": "Risk Adverse",
     "portfolio_description": "Unlikely to take risks",
-    "financial_distribution": [30, 10, 50, 15, 5]
+    "financial_distribution": [30, 10, 50, 5, 5]
   },
   {
     "id": 2, 

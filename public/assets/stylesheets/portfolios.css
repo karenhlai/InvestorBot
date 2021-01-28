@@ -95,6 +95,7 @@
   font-weight: bold;
   color: #E0EAEE;
   outline: none;
+  cursor: pointer;
 }
 
 .chart-size {

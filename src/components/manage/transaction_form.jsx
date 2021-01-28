@@ -14,15 +14,17 @@ export const TransactionForm = ({ portfolio }) => {
 
   // greedy
   const rebalanceCallback = () => {
-    const div = document.getElementById("transactions");
     const categories = Object.keys(inputs);
+    
+    const ul = document.getElementById("transactions");
+    clearAllTransactions(ul);
 
     const inputAmounts = Object.values(inputs).map(input => parseFloat(input));
     const idealAmounts = getIdealDistribution(portfolio.financial_distribution, inputAmounts);
-
+    
     let owed = inputAmounts.map((val, idx) => val - idealAmounts[idx]);
     let empty = owed.filter(val => val !== 0);
-
+    
     while (empty.length > 0) {
       let minVal = getMinVal(owed);
       let maxVal = getMaxVal(owed);
@@ -39,18 +41,18 @@ export const TransactionForm = ({ portfolio }) => {
         owed[maxIdx] = 0;
         owed[minIdx] = 0;
       } else if (remaining < 0) { // if negative, maxVal is 0 (nothing to pay out) and minVal is still owed
-        payout = Math.abs(minVal);
+        payout = Math.abs(maxVal);
         owed[minIdx] = remaining;
         owed[maxIdx] = 0;
       } else if (remaining > 0) { // if positive,  minVal is 0 (settled) and maxVal still has money to pay out
         payout = Math.abs(minVal);
         owed[minIdx] = 0;
         owed[maxIdx] = remaining;
-       };
+      };
 
-      let li = document.createElement("li");
+      const li = document.createElement("li");
       li.innerText = (`Transfer ${payout} from ${categories[maxIdx]} to ${categories[minIdx]}`);
-      div.appendChild(li);
+      ul.appendChild(li);
 
       empty = owed.filter(val => val !== 0);
     }
@@ -63,6 +65,14 @@ export const TransactionForm = ({ portfolio }) => {
     const sum = unbalancedInputs.reduce((acc, amount) => acc + amount);
     return percentages.map(percent => sum * (percent / 100)); 
   }
+
+  const clearAllTransactions = parent => {
+    while(parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+    }
+  }
+
+  const roundToNearestCents = num => Math.ceil(num * 100) / 100;
 
   // destructure obj that is returned to us by hook
   const {inputs, handleInputChange, handleSubmit} = useTransactionForm(initialInputState, rebalanceCallback);
@@ -90,7 +100,7 @@ export const TransactionForm = ({ portfolio }) => {
       </form>
 
       <h3>Transactions to be made:</h3>
-      <div id="transactions"></div>
+      <ul id="transactions"></ul>
     </div>
   )
 }
