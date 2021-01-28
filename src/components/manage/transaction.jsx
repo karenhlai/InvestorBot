@@ -78,7 +78,6 @@ const Transaction = (props) => {
       <div className="chart-size" id="my-chart-size">
         <canvas id="myChart" width="400" height="400"></canvas>
       </div>
-
       <TransactionForm portfolio={portfolio} />
     </div>
   )

@@ -12,14 +12,15 @@ export const TransactionForm = ({ portfolio }) => {
       "Exotic Motor Cars": null
     };
 
-    // greedy
+  // greedy
   const rebalanceCallback = () => {
     const div = document.getElementById("transactions");
     const categories = Object.keys(inputs);
 
     const inputAmounts = Object.values(inputs).map(input => parseFloat(input));
     const idealAmounts = getIdealDistribution(portfolio.financial_distribution, inputAmounts);
-    let owed = inputAmounts.map((val, idx) => val - idealAmounts[idx]); //[-20, -10, 0, 10, 50]
+
+    let owed = inputAmounts.map((val, idx) => val - idealAmounts[idx]);
     let empty = owed.filter(val => val !== 0);
 
     while (empty.length > 0) {
