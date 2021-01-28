@@ -19,8 +19,8 @@ export const useTransactionForm = (initialInputState, rebalanceCallback) => {
   // it should: preventDefault & call callback
   const handleSubmit = (e) => {
     if (e) e.preventDefault();
-    // write rebalance callback here
-    console.log(inputs)
+    // call rebalance callback here
+    // console.log(inputs)
     rebalanceCallback();
   };
 
