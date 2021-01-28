@@ -110,7 +110,7 @@
   margin-top: 10px !important;
 }
 
-#calculate-transactions {
+#transactions {
   margin: 0px 10%;
   min-height: 200px;
   padding: 18px;
@@ -118,7 +118,7 @@
   border-radius: 5px;
 }
 
-#calculate-transactions li {
+#transactions li {
   list-style-type: circle;
   padding: 3px 0px 3px 0px;
   border-bottom: 1px solid #d9dadc;

@@ -79,11 +79,7 @@ const Transaction = (props) => {
         <canvas id="myChart" width="400" height="400"></canvas>
       </div>
 
-      <h3>Enter your funds to acheive the ideal portfolio:</h3>
-      <TransactionForm />
-
-      <h3>Transactions to be made:</h3>
-        <div id="calculate-transactions"></div>
+      <TransactionForm portfolio={portfolio} />
     </div>
   )
 }
