@@ -116,15 +116,13 @@
   margin: 0px 10%;
   min-height: 200px;
   padding: 18px;
-  border: 1px double #d9dadc;
   border-radius: 5px;
 }
 
 #transactions li {
-  list-style-type: circle;
-  padding: 3px 0px 3px 0px;
-  border-bottom: 1px solid #d9dadc;
+  list-style-type: none;
+  padding: 10px;
+  margin: 7px;
+  background: rgb(255 255 255 / 8%);
+  border-radius: 5px;
 }
-
-
-

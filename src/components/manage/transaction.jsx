@@ -5,7 +5,6 @@ import Chart from 'chart.js';
 import { TransactionForm } from './transaction_form';
 
 const Transaction = (props) => {
-  debugger
   // mapStateToProps: was previously using React-Redux Router to get portfolioId from ownProps
   const portfolio = useSelector(state => state.portfolios[props.match.params.id]);
   
