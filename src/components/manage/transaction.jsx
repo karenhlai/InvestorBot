@@ -1,10 +1,11 @@
-import React, {useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Chart from 'chart.js';
 import { TransactionForm } from './transaction_form';
 
 const Transaction = (props) => {
+  debugger
   // mapStateToProps: was previously using React-Redux Router to get portfolioId from ownProps
   const portfolio = useSelector(state => state.portfolios[props.match.params.id]);
   
