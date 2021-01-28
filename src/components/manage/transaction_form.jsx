@@ -5,11 +5,11 @@ import { useTransactionForm } from '../../CustomHooks';
 export const TransactionForm = ({ portfolio }) => {
   
   const initialInputState = {
-      "Bonds": null, 
-      "Stocks": null, 
-      "Real Estate": null, 
-      "International Stocks": null, 
-      "Exotic Motor Cars": null
+      "Bonds": 0, 
+      "Stocks": 0, 
+      "Real Estate": 0, 
+      "International Stocks": 0, 
+      "Exotic Motor Cars": 0
     };
 
   // greedy
